@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Introduction to the Sam’s User Interface</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT SIZE=7><P ALIGN="CENTER">Sam</P>
+</FONT><FONT SIZE=6><P ALIGN="CENTER">A Graphical Cougaar Society Maintenance Tool</P>
+</B></FONT><FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=5><P ALIGN="CENTER">Version 2.0</P>
+<P ALIGN="CENTER">January 16, 2001</P>
+<P ALIGN="CENTER">This software to be used only in accordance with the Cougaar software License agreement (http://www.cougaar.org).</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P ALIGN="CENTER">Document and Software Copyright 2000-2001 Mobile Intelligence Corporation.</P>
+<B><U><FONT SIZE=4><P>Abstract</P>
+</B></U></FONT><P>The Sam toolset has been developed to assist Cougaar users in creating, visualizing, maintaining, and assessing the correctness of Cougaar societies. Sam displays both the explicit structure of societies and the implicit structure formed from producer/consumer relationships between plugins and clusters. Using the publish and subscribe contracts, Sam calculates the producer/consumer dependency graph and shows these publish/subscribe dependencies as directed links. This makes many simple configuration errors obvious and speeds understanding of plugin coupling.</P>
+<P>Using the dependency graph, Sam is also able to analyze the society and report cases where there is no publication matching a subscription, more than one subscription matching a publication, or no subscription matching a publication. These simple checks catch many of errors caused by missing or mutually exclusive plugins being instantiated in a cluster.</P>
+<P>Sam is able to go a step further and also help with building the configurations. A <I>suggest</I> capability allows the user to ask for suggested sets of plugins to fill gaps in a configuration. Sam examines the available plugins and suggests which set of plugins would match the dangling publications and subscriptions in the cluster. Expanding the accuracy and utility of this design assistance is the focus of the current Sam effort and we expect to include extended capabilities in version 3.0 of the toolset.</P>
+<B><U><P>&nbsp;</P>
+</U><P>1.<U>Introduction to the Sam’s User Interface</P>
+</U><I><P>Sam</B></I> provides a single view for basic functions, configuration management</P>
+<P>The <I>User Interface</I> consists of a window that contains several panes and panels for performing these functions. </P>
+<P>The <I>User Interface</I> contains the following elements:</P>
+
+<UL>
+<I><U><LI>Main Menu Bar</I></U>: This provides access to many menus, such as File, Edit, View and Help.&#9; </LI>
+<I><U><LI>Main Tool Bar</I></U>: Composed of buttons, which provide shortcuts to the commands. </LI>
+<I><U><LI>Project Pane</I></U>: Displays the contents of the Society that is currently selected. The Society tree can be used to step into and step out of the society. </LI>
+<I><U><LI>Editor Pane</I></U>: Contains another tool bar that gives the options to edit, save, print or clear the displayed contracts. </LI>
+<I><U><LI>Main Panel</I></U>: This is where the opened societies can be viewed. Each opened society has a tab at the top that displays the name of the society. </LI>
+<I><U><LI>Error Pane</I></U>: It displays the different problems that are associated with the opened societies. </LI>
+<I><U><LI>Status Bar</I></U>: This is updated every time some process is performed on the society.</LI></UL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 1: Sam’s User Interface</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P><IMG SRC="Image32.gif" WIDTH=510 HEIGHT=333></P>
+<I><U><P>&nbsp;</P>
+<OL>
+
+</I><LI>Main Menu Bar</U>:</LI></OL>
+
+
+<UL>
+<I><U><LI>File Menu</I></U>: The File menu helps the user load a particular society both from the". xml" file and the ". ini" files. The Load Society option opens an open dialog box from which the user can choose a particular society that is to be loaded from the xml file. The save society option on the other hand opens a save dialog box using which the society can be saved with as particular xml file and the contracts for that particular society can be saved as the "contracts.xml" file. The "Import from ini" and the "Export to ini" options load a society from the ini files and save a society to the ini files. The print menu helps in printing the graphical representation of the society either as a canvas printout or as a screen snapshot as the requirement may be. The file menu also gives the option of closing one or all the societies at the same time. </LI>
+<I><U><LI>Edit Menu</I></U>: The Edit menu helps in the editing of the graphical representation of the society. It can be used to view the system properties, insert plugins, clusters, communities and contracts as per requirement. The edit menu also aids in cut, copy and pasting of the components. It also aids in the retaining of the particular solution of user’s interest. </LI>
+<I><U><LI>View Menu</I></U>: The view menu helps in the viewing of the lay out that displays the present graphical representation. </LI>
+<I><U><LI>Help Menu</I></U>: Loads the Java Documentation files and user manuals for the application. </LI></UL>
+<DIR>
+
+<P>1.2 <U>Main Tool Bar</U>: The main tool bar is composed of the following buttons.</P></DIR>
+
+
+<UL>
+<I><U><LI>Open Button</I></U>: Performs the same function as the "Import from the ini" command of the file menu of the main menu bar. It opens a dialog box from which the society that needs to be loaded can be selected. </LI>
+<I><U><LI>Save Button</I></U>: Performs the same function as the save society command of the file menu of the main menu bar. It opens a dialog box through which the society can be saved with a particular name. </LI>
+<I><U><LI>Print Button</I></U>: This also aids in printing, but does not give the user an option of a canvas printout or a screen snap shot. It only prints in the canvas printout mode. </LI>
+<I><U><LI>Back and Forward Buttons</I></U>: Once the society is loaded the three buttons, which are on the main tool bar can be accessed. These three buttons are grouped into one unit because of their functionality. Once the user has stepped into the society, the previous pages where the user had been can be accessed until there is no back or a forward page to go to. The main aspect of these buttons is their ability to be associated with only a single tab or rather to a single society. Though the users can move between the tabs, the ability to go back and forward is associated only with a single society or rather a single tab. </LI>
+<I><U><LI>Parent Button</I></U>: This lets the user to access the parent component of the displayed components. </LI>
+<I><U><LI>Analyze Button</I></U>: This will let the user analyze if there are any kinds of problems associated with the society. </LI>
+<I><U><LI>Suggest Button</I></U>: This suggests the different kinds of solutions that are appropriate if there are any problems found in the society. The solutions are displayed in the form new tabbed panes in the main panel with there own associated tabs, which bear their names. The required solution can be retained by clicking on the retain command in the edit menu of the main menu. </LI>
+<I><U><LI>Help Button</I></U>: Loads the Java Documentation files for the application. It also displays the version details for the application.</LI></UL>
+
+<FONT SIZE=2><P>&nbsp;</P>
+</FONT><B><P>2.0 <U>Working with the User Interface</P>
+</U><I><P>2.1.1 <U>Load society</P><DIR>
+<DIR>
+
+</B></U><P>Fig2: shows the options in the file menu of the main menu</P>
+</I><P><IMG SRC="Image25.gif" WIDTH=574 HEIGHT=459></P></DIR>
+</DIR>
+
+<P>Once the Application is up and running, the Sam user interface can be used to load a society from the xml files. Once the "load society" command is clicked a file open dialog box pops up providing the user to choose from the list of the xml file. Once the choice is made the Main Panel will show the graphical representation of the society, for the xml that has been selected. From here the user can step into or out of the society. Stepping into the society at this point will display the graphical representation of the clusters and the communities that are available with in that society.&nbsp;</P>
+<I><P>Fig 3: The file open dialog box for loading the ".xml" files</P>
+</I><P><IMG SRC="Image33.gif" WIDTH=512 HEIGHT=328></P>
+<P>The different clusters and the communities displayed in this particular society are:</P>
+<P><IMG SRC="Image34.gif" WIDTH=550 HEIGHT=400></P>
+<I><P>Fig 4: The Society.xml file with the clusters and the communities that are available</P>
+<OL>
+
+<B><LI>Generator </LI>
+<LI>Communities </LI></OL>
+
+</B></I><P>Stepping into the clusters will display the organized graphical representation of the plugins belonging to that particular cluster. Stepping into the communities will in turn display the clusters and the communities that are available in that community. In the example shown here the community consists of two clusters.</P>
+<OL>
+
+<B><I><LI>Transport</LI>
+<LI>Consumer</LI></OL>
+
+</B></I><P><IMG SRC="Image35.gif" WIDTH=574 HEIGHT=459><B><I>&#9;</B> </P>
+<P>Fig 5: The clusters present in the community of the society.xml </P>
+<B><P>&nbsp;2.1.2<U> Saving the society</P>
+</B></I></U><P>The save society command in the file menu of the main menu will save the society as an xml file, at the same time the contracts for that particular society are also saved as "contracts.xml" file. This will pop up a save dialog box, letting the user to enter the xml name as which the society can be saved as. </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P><IMG SRC="Image36.gif" WIDTH=512 HEIGHT=328></P>
+<I><P>Fig 6: The Save dialog box for the ". Xml" files&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P>2.1.3</B> <B><U>Close the Society</P>
+</B></I></U><P>Closing the tab using the close society command in the file menu of the main menu can close the unwanted society.</P>
+<B><I><P>2.1.4<U> Close all Societies</P>
+</B></I></U><P>One can also close all the tabs/Societies.</P>
+<P>If at the end there are no Societies left and the user wishes to close the last tab, then the default society is automatically loaded so that the main panel is not left blank. </P>
+<B><I><P>2.1.5<U> Import From ini </P>
+</B></I></U><P><IMG SRC="Image37.gif" WIDTH=404 HEIGHT=219></P>
+<I><P>Fig 7: The file open dialog box for the ".soc" files</P>
+</I><P>The Sam user interface can also load a society from the ini files. Once the "Import from ini" command is clicked a file open dialog box pops up providing the user to choose from the list of the ". Soc" files.&#9; </P>
+<P>Once the choice is made the Main Panel will show the graphical representation of the society, for the soc file that has been selected. The communities are not yet represented in the ini files. In the present society that is loaded the clusters that are present are:</P>
+<OL>
+
+<LI>Generator</LI>
+<LI>Consumer</LI>
+<LI>Transport </LI></OL>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 8: The Cluster Generator.</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P><IMG SRC="Image38.gif" WIDTH=460 HEIGHT=336></P>
+<P>&nbsp;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 9: The Cluster Consumer</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P><IMG SRC="Image39.gif" WIDTH=472 HEIGHT=320></P>
+<P>&nbsp;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 10 : The Cluster Transport</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P><IMG SRC="Image40.gif" WIDTH=574 HEIGHT=459><B><I>&#9;&#9;&#9;&#9;&nbsp;</P>
+<P>&nbsp;2.1.6<U> Export to ini</P>
+</B></I></U><P>The Sam user interface can also save a society to the ". Soc" file. Once the "Export to ini" command is clicked a file open dialog box pops up providing the user to enter the name, which the society should be saved as, this will not only save the society as the soc file but also saves the details of each cluster with in the society as the ini files.</P><DIR>
+<DIR>
+
+<P><IMG SRC="Image41.gif" WIDTH=404 HEIGHT=239></P>
+<I><P>Fig 11: The file save dialog box for the ".soc" files </P></DIR>
+</DIR>
+
+</I><B><P>2.2 <I><U>Editing the society</P>
+</B></I></U><P>The edit menu can be used to edit the society. </P>
+<P>A cluster, plugin, contracts or communities can be inserted, removed or copied. Incase the user wants to insert, the insert menu of the edit menu in the main menu needs to be accessed. <I>(Ref: fig 12)</P>
+</I><P><IMG SRC="Image42.gif" WIDTH=574 HEIGHT=459>&#9;&#9;&#9;&#9;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 12: The Edit menu Options</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P>Once the Insert | Cluster is accessed a small list of all the clusters pops up from which the cluster that needs to be inserted can be chosen. </P>
+<P><IMG SRC="Image43.gif" WIDTH=391 HEIGHT=246>&#9;&#9;</P>
+<I><P>Fig 13:The Option Pane Dialog Box to insert a new cluster</P><DIR>
+<DIR>
+
+<P>Fig 14: The Society after inserting a new Cluster Generator.</P></DIR>
+</DIR>
+
+</I><P><IMG SRC="Image44.gif" WIDTH=574 HEIGHT=459></P>
+<P>A cluster or a plugin can be inserted in their related fields only. An error dialog box would popup if a component is pasted or inserted into an unrelated field. For example if a plugin is being inserted in the cluster field or vice-versa.</P>
+<P>&#9;&#9;&#9; <I>Fig 15: Error Dialog Box</P>
+</I><P><IMG SRC="Image45.gif" WIDTH=459 HEIGHT=118></P>
+<P>&nbsp;If the plugin is to be inserted into the field then the user must choose the Insert | Plugin command which will also display a list of the plugins from which the user can choose the one that needs to be inserted. </P><DIR>
+<DIR>
+
+<P><IMG SRC="Image46.gif" WIDTH=510 HEIGHT=372></P>
+<I><P>Fig 16: The Option Pane Dialog Box to insert a new plugin</P>
+<P>&nbsp;</P>
+</I><P><IMG SRC="Image47.gif" WIDTH=520 HEIGHT=376></P></DIR>
+</DIR>
+
+<I><P>Fig 17: Cluster Diagram for the Generator after inserting a new plugin Task2Expander</I> </P>
+<P>Once the desired plugin is selected it is then inserted into the field. </P>
+<P>The edit menu has the other options like copy and paste that can also be used for the purpose of editing the society.</P>
+<P>An Element from the displayed component can be copied to the clip board and pasted back into the related field.</P>
+<B><I><P>2.3 <U>Loading more than one society</P>
+</B></I></U><P>Once a single society is loaded another society can also be loaded, which will be opened in the main panel under a different tab. </P>
+<B><I><P>2.4 <U>Editing Contracts</P>
+</B></I></U><P>To view and edit the contracts, the particular publish or the subscribe is chosen and right clicking the mouse will pop up a small menu with the options of </P>
+<OL>
+
+<B><I><LI>View Contract</LI>
+<LI>Hide Dependencies or Show Dependencies</LI>
+<LI>Externalize Contracts</LI></OL>
+
+</B><P>2.4.1<U>View Contracts</I>:</U> Clicking on the View contracts will display the contracts of that particular publish or subscribe in the editor pane of the Main Window. Further clicking the edit button on the menu bar of the editor pane lets the user edit the contracts, save and also print them. Once the View contract menu item is clicked for one particular component, followed by the edit button of the editor pane, the system will not let the user view or edit contracts for the other components. The user needs to hit the clear button of the editor pane and clear the contents of the editor pane, which will also deselect the selected object. </P>
+<I><P>Fig 18: Contracts for the particular object displayed in the editor pane of the UI</P>
+</I><P><IMG SRC="Image48.gif" WIDTH=572 HEIGHT=419></P>
+<I><P>2.4.2<U><FONT SIZE=2> </FONT>Hide Dependencies</I></U> Clicking on the Hide Dependencies will hide all the related arrows for the particular publish or subscribe. If the right mouse is again clicked for the object whose related dependencies are hidden then the pop up menu will display Show Dependencies instead of the Hide Dependencies menu item. Clicking the Show Dependencies menu item will re-display all the hidden dependencies for that particular input or output contract. </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P><IMG SRC="Image49.gif" WIDTH=574 HEIGHT=459></P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 19: The Grayed out (hidden) dependencies</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><P>In the Fig 19 most of the arrows are clearly seen but few of them are grayed out indicating the hidden dependencies, for the chosen input or output contract.&#9;<I>&#9;</P>
+<P>2.4.3 <U>Externalize Contracts </P>
+</I></U><P>This can be achieved by clicking the "Externalize Contracts" menu item of the popup menu.&nbsp;</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P><IMG SRC="Image50.gif" WIDTH=574 HEIGHT=459></P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>Fig 20: Externalizing contracts</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</I><FONT SIZE=2><P>&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><B><I><P>2.5<U> Analyze</P>
+</B></I></U><P>The Analyze button of the tool bar mainly aids in detecting any kinds of problems associated with the loaded society. The errors are displayed in the form of a JTree in the error pane.<FONT SIZE=2>&nbsp;</P>
+</FONT><I><P>Fig 21: Displaying the problems associated with the society by clicking the analyze button</P>
+</I><P><IMG SRC="Image51.gif" WIDTH=574 HEIGHT=459></P>
+<B><I><P>2.6 <U>Suggest and retain </P>
+</B></I></U><P>If the society is found to be associated with some kinds of problems then clicking the <B><I>suggest button</B></I> helps in obtaining the solutions for the society. </P>
+<P>At times there could be more than one solution available. In that case if the user finds a more suitable solution among the displayed range of solutions then only that solution of the user’s choice can be retained, by clicking on the <B>retain</B> command of the edit menu in the main menu. All the other tabs associated with the societies, including the original society will be closed. </P>
+<P>This results in not only retaining the preferred solution but also renaming the retained solution with that of the original society. </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><IMG SRC="Image52.gif" WIDTH=574 HEIGHT=459></P>
+<I><P>Fig 22: Displaying the solutions for the different societies using suggest&nbsp;</P>
+</I><P><IMG SRC="Image53.gif" WIDTH=570 HEIGHT=360>&#9;&#9;</P>
+<I><P>Fig 23: Retaining the solution with the name of the original society</P>
+<B><P>2.7 <U>Using the associated JTree to navigate through the society</P>
+</B></I></U><P>Once when the Society is loaded the project pane displays all the contents of the society </P>
+<P>in the form of a JTree. </P>
+<P>This JTree can be used to step into and step out of the society i.e., the different graphical representations like that of the clusters or the plugins can be accessed by using the Jtree. </P>
+<P><IMG SRC="Image54.gif" WIDTH=574 HEIGHT=459></P>
+<I><P>Fig 24: Jtree can be used to access the different components of the society</P></I></BODY>
+</HTML>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>Toolkit</fullname>
+  <class>
+    <path>[../../../projects/alp/alpine_stuff/ALP_7.0/lib/toolkit.jar]</path>
+  </class>
+</library>
+

@@ -1,0 +1,18 @@
+<society name="Demo">
+  <cluster name="Generator">
+    <plugin name="UserCommandInterface"></plugin>
+    <plugin name="Task1Expander"></plugin>
+    <plugin name="NewTaskAllocator"></plugin>
+    <plugin name="Task2Expander"></plugin>
+    <plugin name="ExternalDataSource"></plugin>
+  </cluster>
+  <community name="newone">
+  <cluster name="Transport">
+    <plugin name="WorkFlowAggregator"></plugin>
+    <plugin name="Transport"></plugin>
+  </cluster>
+  <cluster name="Consumer">
+    <plugin name="TaskConsumer"></plugin>
+  </cluster>
+  </community>
+</society>

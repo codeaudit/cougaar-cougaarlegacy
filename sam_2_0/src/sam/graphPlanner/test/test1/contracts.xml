@@ -1,0 +1,488 @@
+<!--- *****************************************************************
+ **                                                                  **
+ **  Contracts.xml                                                   **
+ **                                                                  **
+ **  The complete set of contracts for the demo society              **
+ **                                                                  **
+ **  Compiled by:  Douglas C. MacKenzie                              **
+ **                                                                  **
+ **********************************************************************/
+
+ $Id: contracts.xml,v 1.1 2003-05-20 15:23:52 tom Exp $
+
+***********************************************************************
+* $Log: contracts.xml,v $
+* Revision 1.1  2003-05-20 15:23:52  tom
+* Initial revision
+*
+* Revision 1.1  2000/10/18 02:00:00  doug
+* Linked graphPlanner in
+*
+* Revision 1.1  2000/10/16 14:41:22  doug
+* Test the graph planner
+*
+* Revision 1.3  2000/08/18 16:51:59  doug
+* Fixed strings
+*
+* Revision 1.2  2000/08/18 03:27:47  doug
+* *** empty log message ***
+*
+* Revision 1.1  2000/08/18 01:56:24  doug
+* Initial revision
+*
+*
+******************************************************************* -->
+
+<contracts>
+   <plugin name="ExternalDataSource">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>User Commands</equals>
+            </getVerb>
+         </and>
+      </subscribe>
+
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 1</equals>
+            </getVerb>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 2</equals>
+            </getVerb>
+         </and>
+      </publish>
+   </plugin>
+
+   <plugin name="UserCommandInterface">
+      <subscribe>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 1</equals>
+            </getVerb>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 2</equals>
+            </getVerb>
+         </and>
+      </publish>
+   </plugin>
+
+   <plugin name="Task1Expander">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 1</equals>
+            </getVerb>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+      </publish>
+   </plugin>
+
+   <plugin name="Task2Expander">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Task 2</equals>
+            </getVerb>
+         </and>
+      </subscribe>
+
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+      </publish>
+   </plugin>
+
+
+
+   <plugin name="NewTaskAllocator">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+<!--
+         <and>
+            <isTask/>
+            <isPrepositionalPhrase/>
+            <getPreposition>
+				   <equals>TheJob</equals>
+            </getPreposition>
+         </and>
+-->
+      </subscribe>
+
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </publish>
+   </plugin>
+
+
+
+   <plugin name="WorkFlowAggregator">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>WorkFlows</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+      </publish>
+   </plugin>
+
+   <plugin name="Transport">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>WorkFlows</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Transport</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </publish>
+   </plugin>
+
+   <plugin name="TaskConsumer">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Transport</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Reports</equals>
+            </getVerb>
+         </and>
+      </publish>
+   </plugin>
+
+   
+   <cluster name="test">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>User Commands</equals>
+            </getVerb>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+<!--
+         <and>
+            <isTask/>
+            <getVerb>
+		         <isNotNull/>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+-->
+      </publish>
+   </cluster>
+
+   <cluster name="Transport">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Start</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>DoIt</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Finish</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Transport</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </publish>
+   </cluster>
+
+   <cluster name="Consumer">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Transport</equals>
+            </getVerb>
+            <getDirectObject>
+               <isOrganization/>
+            </getDirectObject>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Reports</equals>
+            </getVerb>
+         </and>
+      </publish>
+   </cluster>
+
+   <society name="test">
+      <subscribe>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>User Commands</equals>
+            </getVerb>
+         </and>
+      </subscribe>
+      <publish>
+         <and>
+            <isTask/>
+            <getVerb>
+		         <equals>Reports</equals>
+            </getVerb>
+         </and>
+      </publish>
+   </society>
+
+
+
+<!-- ####################################################################### -->
+</contracts>

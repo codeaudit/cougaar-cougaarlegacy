@@ -1,0 +1,340 @@
+<plugin-contracts> 
+
+<!---
+  **************************************************************
+  SUBSCRIBE
+  **************************************************************
+-->
+
+<subscribe>
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+      <isTask></isTask>
+      <getVerb>
+        <equals-Object>foo</equals-Object>
+      </getVerb>
+  </and>
+
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+     <isTask></isTask>
+     <getPlan>
+<!--
+TEMPORARILY-DISABLED
+           <equals>Reality</equals>
+-->
+     </getPlan>
+  </and>
+
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+       <isTask/>
+       <getSource>
+            <isNotNull/>
+       </getSource>
+       <getDestination>
+            <isNotNull/>
+       </getDestination>
+  </and>
+
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+       <isTask/>  
+       <getPreferences>
+           <exists>
+             <and>
+                <isPreference/>
+<!--
+TEMPORARILY-DISABLED
+                <getAspectType>AspectType.START_TIME</getAspectType>
+-->
+                <getScoringFunction>
+                </getScoringFunction>
+             </and>
+           </exists>
+       </getPreferences>
+  </and>
+
+
+
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+     <isTask/>
+     <getPrepositionalPhrases>
+         <exists>
+           <and>
+               <isPrepositionalPhrase></isPrepositionalPhrase>
+               <getPreposition>
+                    <equals-Object>Constants.Preposition.FOR</equals-Object>
+               </getPreposition>
+               <getIndirectObject>
+                   <isNotNull/>
+               </getIndirectObject>
+           </and>
+         </exists>
+     </getPrepositionalPhrases>
+     <getVerb>
+           <equals-Object>Constants.Verb.ReportForDuty</equals-Object>
+     </getVerb>
+
+  </and>
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+     <isTask/>
+     <getPrepositionalPhrases>
+         <exists>
+           <and>
+               <isPrepositionalPhrase></isPrepositionalPhrase>
+               <getIndirectObject>
+                   <isNotNull/>
+               </getIndirectObject>
+           </and>
+         </exists>
+     </getPrepositionalPhrases>
+  </and>
+</subscribe>
+
+<!---
+  **************************************************************
+  PUBLISH
+  **************************************************************
+-->
+
+<publish>
+  <!-- =====================================
+       Source:   Foo.java
+       Comments: TEST
+    -->
+  <and>
+      <isTask></isTask>
+      <getVerb>
+        <equals-Object>foo</equals-Object>
+      </getVerb>
+  </and>
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgRTDataPlugIn
+       Comments: publish
+    -->
+
+    <and>
+       <isOrganization/>
+       <getAssignedPG>
+             <getRelationship equals ="Relationship.Superior"/>
+       </getAssignedPG>
+    </and>
+
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgRTDataPlugIn
+       Comments: publish
+    -->
+ <and>
+      <isTask/>  
+      <getPreferences>
+         <exists>
+           <or>
+             <and>
+                <isPreference/>
+<!--
+TEMPORARILY-DISABLED
+                <getAspectType>AspectType.START_TIME</getAspectType>
+-->
+                <getScoringFunction>
+                   <getBest>
+                           <getAspectValue>
+                                  <and>
+                                       <isTimeAspectValue/>
+                                       <dateValue>
+                                           <isNotNull/>
+                                       </dateValue>
+                                  </and>
+                           </getAspectValue>
+                   </getBest>
+                </getScoringFunction>
+             </and>
+             <and>
+                <isPreference/>
+<!--
+TEMPORARILY-DISABLED
+                <getAspectType>AspectType.END_TIME</getAspectType>
+-->
+                <getScoringFunction>
+                   <getBest>
+                           <getAspectValue>
+                                  <and>
+                                       <isTimeAspectValue/>
+                                       <dateValue>
+                                           <isNotNull/>
+                                       </dateValue>
+                                  </and>
+                           </getAspectValue>
+                   </getBest>
+                </getScoringFunction>
+             </and>
+           </or>
+         </exists>
+      </getPreferences>
+  </and>
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgRTDataPlugIn
+       Comments: publish
+    -->
+
+
+   <and>
+       <isOrganization/>
+       <getRoleSchedule>
+             <getAvailableSchedule>
+                <and>
+                   <getStartDate equals="01/01/1990">
+                   </getStartDate>
+                   <getEndDate equals="01/01/2010">
+                   </getEndDate>
+                </and>
+             </getAvailableSchedule>
+       </getRoleSchedule>
+       <getAssignedPG>
+           <and>
+              <getRelationship>
+                   <isNotNull/>
+              </getRelationship>
+              <getRoles>
+                   <isNotNull/>
+              </getRoles>
+           </and>
+       </getAssignedPG>
+    </and>
+
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgReportPlugIn
+       Comments: publish
+    -->
+
+    <and>
+        <isAssetTransfer/> <!-- specialied PlanElement -->
+    </and>
+
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgReportPlugIn
+       Comments: publish
+    -->
+
+    <and>
+       <isTask/>
+       <getVerb equals="RFDReRoute"/>
+       <getPrepositionalPhrases>
+            <exists>
+                <and>
+                    <isPrepositionalPhrase></isPrepositionalPhrase>
+                    <getPreposition>
+                          <equals-Object>Constants.Preposition.FOR</equals-Object>
+                    </getPreposition>
+                    <getIndirectObject>
+                           <isOrganization/>
+                    </getIndirectObject>
+                </and>
+            </exists>
+       </getPrepositionalPhrases>
+    </and>
+
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgReportPlugIn
+       Comments: publish
+    -->
+
+    <and>
+       <isOrganization/>
+       <getAssignedPG>
+             <getRelationship equals="Relationship.FORMER"/>
+       </getAssignedPG>
+    </and>
+
+
+  <!-- =====================================
+       Source:   mil.darpa.log.alpine.plugin.organization.OrgReportPlugIn
+       Comments: publish
+    -->
+
+    <and>
+       <isAssetTransfer/>
+       <getTask>
+           <getPreferences>
+               <exists>
+                 <and>
+                  <and>
+                   <isPreference/>
+<!--
+TEMPORARILY-DISABLED
+                   <getAspectType equals="AspectType.START_TIME"/>
+-->
+                   <getScoringFunction>
+                          <getBest>
+                              <getAspectValue>
+                                  <and>
+                                       <isTimeAspectValue/>
+<!--
+TEMPORARILY-DISABLED
+                                       <getDateValue>
+                                           <isNotNull/>
+                                       </getDateValue>
+-->
+                                  </and>
+                              </getAspectValue>
+                          </getBest>
+                   </getScoringFunction>
+                 </and>
+                 <and>
+                   <isPreference/>
+<!--
+TEMPORARILY-DISABLED
+                   <getAspectType equals="AspectType.END_TIME"/>
+-->
+                   <getScoringFunction>
+                          <getBest>
+                              <getAspectValue>
+                                  <and>
+                                       <isTimeAspectValue/>
+<!--
+TEMPORARILY-DISABLED
+                                       <getDateValue>
+                                           <isNotNull/>
+                                       </getDateValue>
+-->
+                                  </and>
+                              </getAspectValue>
+                          </getBest>
+                   </getScoringFunction> 
+                 </and>
+                </and>
+               </exists>
+          </getPreferences>
+       </getTask>
+    </and>
+
+
+</publish>
+
+</plugin-contracts>

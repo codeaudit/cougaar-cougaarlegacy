@@ -1,0 +1,704 @@
+<contracts>
+  <plugin name="Task2Expander_Finish">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Inprocess Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="Task2Expander">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="NewTaskAllocator">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="Transport">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Transport"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="WorkFlows"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="Task2Expander_Init">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Inprocess Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="TaskConsumer">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Reports"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Transport"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="ExternalDataSource">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 1"/>
+    </equals>
+  </getVerb>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="User Commands"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="Fancy_NewTaskAllocator">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="Task1Expander">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <is:PrepositionalPhrase/>
+  <getPreposition>
+    <equals>
+      <const value="TheJob"/>
+    </equals>
+  </getPreposition>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 1"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="WorkFlowAggregator">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="WorkFlows"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</subscribe>
+  </plugin>
+  <plugin name="UserCommandInterface">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 1"/>
+    </equals>
+  </getVerb>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Task 2"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+</subscribe>
+  </plugin>
+  <cluster name="Consumer">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Reports"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Transport"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</subscribe>
+  </cluster>
+  <cluster name="Generator">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="User Commands"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </cluster>
+  <cluster name="Transport">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Transport"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Start"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="DoIt"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Finish"/>
+    </equals>
+  </getVerb>
+  <getDirectObject>
+    <is:Organization/>
+  </getDirectObject>
+</and>
+</subscribe>
+  </cluster>
+  <society name="correctable">
+<publish>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="Reports"/>
+    </equals>
+  </getVerb>
+</and>
+</publish>
+<subscribe>
+
+<and>
+  <is:Task/>
+  <getVerb>
+    <equals>
+      <const value="User Commands"/>
+    </equals>
+  </getVerb>
+</and>
+</subscribe>
+  </society>
+</contracts>

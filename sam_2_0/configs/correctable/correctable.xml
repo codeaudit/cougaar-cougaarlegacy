@@ -1,0 +1,12 @@
+<society name="correctable">
+  <cluster name="Generator">
+    <plugin name="UserCommandInterface"></plugin>
+  </cluster>
+  <cluster name="Transport">
+    <plugin name="Transport"></plugin>
+    <plugin name="WorkFlowAggregator"></plugin>
+  </cluster>
+  <cluster name="Consumer">
+    <plugin name="TaskConsumer"></plugin>
+  </cluster>
+</society>

@@ -1,0 +1,14 @@
+
+
+[Clusters]
+cluster = Generator
+cluster = Transport
+cluster = Consumer
+
+[AlpProcess]
+
+[Policies]
+
+[Permission]
+
+[AuthorizedOperation]
