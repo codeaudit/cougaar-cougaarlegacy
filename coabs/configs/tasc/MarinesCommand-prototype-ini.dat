@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/MarinesCommand"
+
+[Relationship]
+Superior      "CINC"  ""
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "MarinesCommand"
+AlternateTypeIdentification	String  "SRC/MarinesCommand"
+
+[OrganizationPG]
+Roles Collection<Role> "MarinesCommand"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "MarinesCommand"
+

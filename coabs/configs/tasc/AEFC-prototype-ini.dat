@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/AEFC"
+
+[Relationship]
+Superior	    "HQ-USAF-XOP"     "AirExpeditionaryForceCenter"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "AEFC"
+AlternateTypeIdentification	String  "SRC/AEFC"
+
+[OrganizationPG]
+Roles Collection<Role> "AirExpeditionaryForceCenter"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "AEFC"
+

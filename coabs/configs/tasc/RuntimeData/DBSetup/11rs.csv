@@ -1,0 +1,27 @@
+E1,1,Whisper Watt Generator,6230P00105,22B100,Sortie Generation FLT ,4580,138,70,75,8! 9,L2C,H,N,1,alp.ldm.asset.Repairable
+E1,2,Whisper Watt Generator,6230P00105,22B100,Sortie Generation FLT ,4580,138,70,75,8! 9,L2C,H,N,1,alp.ldm.asset.Repairable
+E1,3,Whisper Watt Generator,6230P00105,22B100,Sortie Generation FLT ,4580,138,70,75,8! 9,L2C,H,N,1,alp.ldm.asset.Repairable
+E1,4,463L PLT ,463L11111111111,3.10E+05,Operations,2575,88,108,3,,J3D,,N,1,alp.ldm.asset.Container
+E1,5,463L PLT ,463L11111111111,2G2100,Medical,2900,88,108,90,22,J3C,H,N,1,alp.ldm.asset.Container
+E1,6,ISU-90,8145013163295,22B100,Sortie Generation FLT ,1000,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,7,Antenna,7648654-00,22B100,Sortie Generation FLT ,3640,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,,Test Antenna,7648675-00,22B100,Sortie Generation FLT ,3640,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,,GSE Bench,7648708-02,22B100,Sortie Generation FLT ,3640,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,,GSE Cart,7648707-02  ,22B100,Sortie Generation FLT ,3640,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,,GSE Cabinet,0000KU,22B100,Sortie Generation FLT ,3640,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,8,UAV Parts,TASC55555555556,22B100,Sortie Generation FLT ,4630,88,108,90,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,9,463L PLT ,463L11111111111,22B100,Sortie Generation FLT ,3890,88,108,96,,J3C,,N,1,alp.ldm.asset.Container
+E1,10,463L PLT ,463L11111111111,22B100,Sortie Generation FLT ,2520,88,108,96,,J3C,,N,1,alp.ldm.asset.Container
+E1,11,463L PLT ,463L11111111111,22B100,Sortie Generation FLT ,3750,88,108,3,,J3C,,N,1,alp.ldm.asset.Container
+E1,12,463L PLT ,463L11111111111,22B100,Sortie Generation FLT ,3715,88,108,3,,J3C,,N,1,alp.ldm.asset.Container
+E1,13,UAV Casket,6230PUCA955001,22B100,Sortie Generation FLT ,13920,324,88,102,9,D2C,H,N,1,alp.ldm.asset.Repairable
+E1,14,Ground Data Terminal,TASC77777777778,22B100,Sortie Generation FLT ,1465,88,108,3,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,15,Ground Data Terminal,TASC77777777778,22B100,Sortie Generation FLT ,1465,88,108,96,,J3C,,N,1,alp.ldm.asset.Repairable
+E1,16,Ground Control Station,TASC88888888889,2R1100,COMM/NAV,22450,444,103,107,8! 22,L1D,H,N,1,alp.ldm.asset.Repairable
+E1,17,463L PLT ,463L11111111111,22B100,Sortie Generation FLT ,1630,88,108,3,3,J3C,H,N,1,alp.ldm.asset.Container
+E1,18,463L PLT,463L11111111111,2R1100,COMM/NAV,5545,88,108,3,,J3C,,N,1,alp.ldm.asset.Container
+E1,19,PHS (HMMWV),5895013995915,2R1100,COMM/NAV,9480,199,100,102,8! 9! 22,L2D,H,N,1,alp.ldm.asset.Repairable
+E1,20,2.4m Antena Platform,5895L93M13001 ,2R1100,COMM/NAV,3370,168,88,89,,A2D,,N,1,alp.ldm.asset.Repairable
+E1,21,SEM (HMMWV),5895013995915,2R1100,COMM/NAV,9220,199,100,102,9,L2D,H,N,1,alp.ldm.asset.Repairable
+E1,22,5.5m Antena Platform,5895L714092501,2R1100,COMM/NAV,13000,240,100,102,,A2D,,N,1,alp.ldm.asset.Repairable
+E1,23,SAR Equipment,TASC33333333344,22B100,Sortie Generation FLT ,4355,88,108,96,,J3D,,N,1,alp.ldm.asset.Repairable

@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/DhahranAFBSparePartsInvMgr"
+
+[Relationship]
+Superior    "DhahranAFB"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "DhahranAFBSparePartsInvMgr"
+AlternateTypeIdentification String "SRC/DhahranAFBSparePartsInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "DhahranAFBSparePartsInvMgr"
+

@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/37BS"
+
+[Relationship]
+Superior    "28BW"          ""
+Supporting  "HQ-USAF-XOP"   "B1B-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"37BS"
+AlternateTypeIdentification	String	"SRC/37BS"
+
+[OrganizationPG]
+Roles Collection<Role> "BomberSquadron,AEF2-Role-Bomber,B1B-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "37BS"
+

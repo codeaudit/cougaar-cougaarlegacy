@@ -1,0 +1,59 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<h1 align="left">ALP External Agent Liaison Capability Release Notes</h1>
+<h2 align="left">Latest Release Version: 1.0</h2>
+<h2 align="left">Latest Release Date: 11/27/00</h2>
+<h3 align="left">Summary</h3>
+<p align="left">This is the first official release of the ALP external agent
+liaison capability.&nbsp; It includes a demonstration of interoperability
+between an ALP society, the CoABS Grid, and a RETSINA-based information agent
+that supplies weather forecasts.</p>
+<h3 align="left">Changes from prior release (version 0.9)</h3>
+<h4 align="left">New capabilities and improvements</h4>
+<ul>
+  <li>
+    <p align="left">The ALP weather forecasting task was split into a weather
+    requirement task (one per affected prepare-for-transport task) and a
+    get-forecast task.&nbsp; Get-forecast tasks are now multi-parent tasks that
+    are a composition of multiple weather requirement tasks representing the
+    same location and date.&nbsp; The WeatherLiaisonPlugIn now updates
+    get-forecast results from forecast data acquired via the Grid, and the
+    weather trigger updates the itinerary of the affected prepare-for-transport
+    tasks when the results flow back through the task compositions.&nbsp; The
+    weather trigger also saves the original itineraries for later display and
+    comparison.&nbsp; Defunct weather requirements (for past-current dates or
+    for unknown locations) are correctly purged from the plan.</li>
+  <li>
+    <p align="left">A new PSP exists (liaison/demo/WEATHER_IMPACT.PSP) that
+    displays the results of weather forecast requests and their impact on
+    prepare-for-transport tasks.</li>
+  <li>
+    <p align="left">A software brake that regulated the speed of spawning new
+    queries to the RETSINA information agent has been removed.</li>
+  <li>
+    <p align="left">Portions of the Liaison Administration Tool GUI were
+    implemented with multiple threads to improve apparent response times.</li>
+</ul>
+<h4 align="left">Bug fixes</h4>
+<ul>
+  <li>
+    <p align="left">Corrected a race condition which caused the Liaison
+    Administration Tool GUI to fail to update liaison status properly under
+    certain circumstances.</li>
+</ul>
+<h4 align="left">Installation information</h4>
+<p align="left">See <a href="install/index.html">the installation instructions.</a></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]  "UIC/VirtualAirlines"
+
+[Relationship]
+Superior      "TRANSCOM"  "AirTransportationProvider"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"VirtualAirlines"
+AlternateTypeIdentification String  "SRC/VirtualAirlines"
+
+[OrganizationPG]
+Roles Collection<Role> "AirTransportationProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "VirtualAirlines"
+

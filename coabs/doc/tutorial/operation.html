@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="factories.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      &nbsp;</td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Liaison Operation</b></h2>
+<blockquote>
+  <p align="left">As noted at the beginning, this tutorial assumes that the liaison capability
+  has already been properly <a href="../install/index.html"> installed and
+  configured</a>.&nbsp; Any use of the liaison capability currently requires the
+  availability of CoABS Grid-based Jini services (to support the <code>CoABSLiaisonDeputy</code>
+  class) and a JavaSpaces service (to support the <code>LiaisonManager</code>
+  class and liaison administration in general).&nbsp; The following instructions
+  activate the necessary processes; they refer to batch files in the <code>bin</code>
+  directory of the liaison capability distribution:</p>
+</blockquote>
+<h3><i>Starting the CoABS Grid</i></h3>
+<ul>
+  <li>Run the script <code>StartCoABS.bat</code>.&nbsp; </li>
+  <li>A command prompt window and a GUI window will open.&nbsp; </li>
+  <li>In the GUI window click on the &quot;Delete logs&quot; button.&nbsp; </li>
+  <li>Then click on the &quot;Start Grid Daemons&quot; button.&nbsp; </li>
+  <li>Then select the &quot;Daemon Output&quot; tab and wait for a confirmation
+    line to appear in the HTTP output pane.&nbsp; </li>
+  <li>Select the &quot;Grid Controls&quot; tab and click on the &quot;Start
+    Logger Agent&quot; button.&nbsp; </li>
+  <li>Select the &quot;Daemon Output&quot; tab and wait for a second
+    confirmation line to appear in the HTTP output pane.&nbsp; </li>
+  <li>Select the &quot;Grid Status&quot; tab and fill in the field at the top
+    with the DNS name of the machine the Grid is running on.&nbsp; </li>
+  <li>Click on the &quot;Find Agents&quot; button.&nbsp; </li>
+  <li>In a few second the display should change to show 2 registered agents;
+    this confirms that the Grid is functional.&nbsp; </li>
+  <li>You may shrink both the GUI window and the command prompt window.</li>
+</ul>
+<h3><i>Starting a JavaSpaces service</i></h3>
+<ul>
+  <li>Run the script <code>StartJiniTransactions.bat</code>.</li>
+  <li>A command prompt window will open.</li>
+  <li>At the prompt, answer Y.</li>
+  <li>In a few seconds the window will disappear.</li>
+  <li>Run the script <code>StartTransientJavaSpace.bat</code>.</li>
+  <li>A command prompt window will open.</li>
+  <li>You may shrink this window.</li>
+  <li>Run the script <code> StartAppWeb.bat</code> on the host where the ALP society will be running.</li>
+  <li>A command prompt window will open.</li>
+  <li>You may shrink this window.</li>
+</ul>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="factories.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      &nbsp;</td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

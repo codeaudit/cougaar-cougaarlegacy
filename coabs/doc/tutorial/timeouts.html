@@ -1,0 +1,224 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="multithread.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="administration.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Timeouts</b></h2>
+<blockquote>
+  <p class="MsoNormal">To prevent the problems that may arise when the
+  inevitable bad things happen to messages or external agents, every interaction
+  thread executes under configurable time limits or timeouts.&nbsp; There are
+  two types of timeouts that can be employed: an overall limit can be placed on
+  the time for an entire interaction thread to be completed, or limits can be
+  placed on the time to execute individual action methods within a single
+  interaction thread.&nbsp; Both kinds of limits can be in effect concurrently.</p>
+  <p class="MsoNormal">To configure overall interaction timeouts, set the <code>timeLimit</code>
+  parameter for the PlugIn (or the <code>com.prc.alp.liaison.timeLimit</code>
+  property of the JVM run-time environment to affect all liaison PlugIns in a single JVM)
+  to the maximum number of milliseconds allowed for an interaction to
+  complete.&nbsp; If no limit is specified, the default limit is equivalent to 5
+  minutes. This limit is the same for all interaction threads created by the
+  PlugIn (or in the JVM); it is not currently possible to have different overall
+  interaction timeouts for different interactions created by a single PlugIn.</p>
+  <p class="MsoNormal">In order to apply timeouts to individual action methods,
+  we must add some additional code to our <code>Interactor</code>.&nbsp; In
+  fact, our evolving example won't even compile properly until we do so.&nbsp; Again,
+  the new code is colored in <font color="#FF0000">red</font>:</p>
+<blockquote>
+  <pre>import com.globalinfotek.coabsgrid.*;
+import com.prc.alp.liaison.admin.*;
+import com.prc.alp.liaison.interact.*;
+import com.prc.alp.liaison.plugin.*;
+
+public class TrafficMonitorInitiator
+  implements MultithreadInteractor {
+  
+  CoABSLiaisonDeputy deputy = null;
+  AgentRep agent = null;
+  PlanData pData = null;
+
+  public TrafficMonitorInitiator (CoABSLiaisonDeputy dep,
+                                  AgentRep extAgent) {
+    deputy = dep;
+    agent = extAgent;
+  }
+  
+  public Object begin (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">iaction.sleep(0);</font>
+    pData = (PlanData) o;
+    ...
+    return &quot;SEND&quot;;
+  }
+
+  public Object receive (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    Object reply;
+    while ( (reply = deputy.getLastReply(iaction.getID())) == null )
+      // need to wait for external agent to respond with a message
+      iaction.sleep(500);
+    Object result = ... // code that can extract a useful result
+                        //   from the raw message text returned by
+                        //   the external agent
+    // Have the deputy save the result extracted from this message in its
+    // saved reply hash table.  Use the unique ID of this interaction
+    // instance both as the key and the result object as the value.
+    deputy.saveReply(iaction.getID(), result);
+    return &quot;END&quot;;
+  }
+
+  public Object send (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">iaction.sleep(0);
+</font>    String replyWith = iaction.getID();
+    String myMsg = ... // code that creates an outgoing message, using
+                       //   information extracted from pData, as well as
+                       //   a reference to the value of replyWith, so that
+                       //   replies to this message that are received
+                       //   later can be &quot;recognized&quot; in the handle method.
+    try {
+      extAgent.addMessage
+        (new Message(extAgent.getName(), deputy.getGridAgentRep(), myMsg));
+      // Have the deputy save a reference to this outgoing message in its
+      // pending reply hash table.  Use the unique ID of this interaction
+      // instance both as the key and the value, since each interaction
+      // using this interactor generates only one outgoing message.
+      deputy.putPending(iaction.getID(), iaction.getID());
+      return &quot;RECEIVE&quot;;
+      } catch (Exception ex) {
+        ...
+      }
+  }
+
+  public Object normalEnd (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">iaction.sleep(0);</font>
+    // Retrieve and return the result object associated with
+    // this interaction
+    return deputy.getLastReply(iaction.getID());
+  }
+
+  public void abnormalEnd (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">iaction.sleep(0);</font>
+    System.err.println(&quot;Something bad happened!&quot;);
+  }
+
+  public ActionType nextAction (Object o, Interaction iaction, 
+                                boolean priorActExpired) {
+    if ( o == null )
+      return new ActionType(&quot;BEGIN&quot;);
+    <font color="#FF0000">else if ( priorActExpired )
+      return new ActionType(&quot;ABORT&quot;);
+    else if ( (String) o.equals(&quot;RECEIVE&quot;) )
+      return new ActionType(&quot;RECEIVE&quot;, 10000);
+</font>    else
+      return new ActionType((String) o);
+  }
+  
+  public boolean handle(Object obj, Object context, Interaction iaction) {
+    Message msg = (Message) obj;
+    ExternalAgentReference sender = (ExternalAgentReference) context;
+    if ( !sender.agent.equals(extAgent.getName()) ) {
+      return false; // message is not from the agent we recognize;
+    }
+    // Check to see if the received message is related to the current
+    //   interaction instance
+    String msgText = msg.getRawText();
+    String expectedID = iaction.getID();
+    String replyID = ... // code to extract some reply ID from the
+                         //   received message text
+    String pendingReply = (String) deputy.getPending(replyID);
+    if ( expectedID.equals(pendingReply) ) {
+      // The message is a valid response for this interaction
+      //   so have the deputy save this response
+      deputy.saveReply(expectedID, msg.getRawText());
+      return true;
+    } else
+      // Otherwise, it's a response from a different interaction, 
+      //   so it needs to be handled by that one
+      return false;    
+  }
+
+}</pre>
+</blockquote>
+<p>This time we've only made a few changes, but they are sufficient to make our
+example workable, and to demonstrate how action method timeouts can be used
+effectively.&nbsp; First, the <code>nextAction</code> method has been modified
+to allow a timeout of 10 seconds for the <code>receive</code> action method by
+returning the object <code>ActionType(&quot;RECEIVE&quot;, 10000)</code>
+whenever the new state string indicates that a receive action should be
+performed next.&nbsp; The constructor for an <code>ActionType</code> may be
+passed an optional <code>long</code> second argument that specifies the maximum
+time in milliseconds allowed for the new action.</p>
+<p>Second, <code>nextAction</code> has also been modified to check the value of
+the <code>priorActExpired</code> boolean parameter.&nbsp; Normally, the value of
+this parameter is false when <code>nextAction</code> is called during the
+execution of the interaction thread.&nbsp; However, if an action method timeout
+is detected, the currently executing action method will be interrupted without
+completion, and the <code>nextAction</code> method will be called again
+immediately.&nbsp; In this case, <code>nextAction</code> will be passed the same
+state object it was passed on its prior invocation, and the <code>priorActExpired</code>
+parameter will be <code>true</code>.&nbsp; This allows <code>nextAction</code>
+to determine which action method was active when a timeout occured, take some
+corrective action, and attempt to retry the action (perhaps with a longer
+timeout) or specify an alternate next action.&nbsp; In our example code, it
+simply returns an <code>&quot;ABORT&quot; ActionType</code>, which will cause
+the <code> abnormalEnd</code> action method to be called next.</p>
+<p>Finally, a call to <code>Interaction.sleep</code> has been
+      added to each of the basic action methods where it did not already exist (<code>begin</code>,
+<code>send</code>, <code>normalEnd</code>, and <code>abnormalEnd</code>).&nbsp;
+This allows the interaction thread to respond properly in the event that an
+interaction or action method timeout occurs.&nbsp; The function of <code>Interaction.sleep</code>
+is identical to <code>Thread.sleep</code>, except that the former throws special
+exceptions when interaction timeouts or action method timeouts occur.&nbsp;
+Therefore, any action method that needs to sleep for some reason should use <code>Interaction.sleep</code>
+rather than <code>Thread.sleep</code>, or else timeouts that occur during the
+sleep interval will not be caught properly.&nbsp; Furthermore, <i>every </i>action
+method must call <code>Interaction.sleep</code> at least once to support
+timeout exception handling and prevent complaints by the compiler. A time limit
+of zero milliseconds may be specified, in which case <code>Interaction.sleep</code>
+simply returns immediately.</p>
+  <p>Our example <code>Interactor</code> is almost complete.&nbsp; All that
+  remains is to have it determine whether it actually has been given permission
+  to interact with an external agent.</p>
+</blockquote>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="multithread.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="administration.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/AvianoAFB"
+
+[Relationship]
+Superior    "ACC"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"AvianoAFB"
+AlternateTypeIdentification	String	"SRC/AvianoAFB"
+
+[OrganizationPG]
+Roles Collection<Role> "AirForceBase,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "AvianoAFB"
+

@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/HQ-USAF-XOPW"
+
+[Relationship]
+Superior    "AEFC"     "HeadQuarters-USAF-XOPW"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "HQ-USAF-XOPW"
+AlternateTypeIdentification	String  "SRC/HQ-USAF-XOPW"
+
+[OrganizationPG]
+Roles Collection<Role> "HeadQuarters-USAF-XOPW"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "HQ-USAF-XOPW"
+

@@ -1,0 +1,20 @@
+[Prototype]       SupportOrganization
+        
+[UniqueId]        "UTC/SupportOrg"
+
+[UIC]             "UIC/VFMA-242"
+
+[Relationship]
+Superior  "MarinesCommand"       ""
+
+[TypeIdentificationPG]
+TypeIdentification            String  "UTC/SupportOrg"
+Nomenclature                  String  "VFMA-242"
+AlternateTypeIdentification   String  "SRC/VFMA-242"
+
+[OrganizationPG]
+Roles Collection<Role> "MarineSquadron"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "VMFA-242"
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE SQUADRONMISSIONINFO>
+<SQUADRONMISSIONINFO
+     WING_INSIGNIA_FILE     = "xxx.gif"
+     SQUADRON_INSIGNIA_FILE = "xxx.gif"
+     DPO                    = "Dessert Return"
+     NUM_AIRCRAFT           = "12"
+     MISSION                = "Air Interdiction"
+     OP_TEMPO              = "5x5x5"
+     BEDDOWN_LOCATION       = "AvianoAFB"
+     DURATION               = "180 days"
+     SORTIE_LENGTH          = "2.0">
+</SQUADRONMISSIONINFO>

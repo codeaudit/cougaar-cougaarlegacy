@@ -1,0 +1,24 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/28BW"
+
+[Relationship]
+Superior    "ACC"           ""
+Supporting  "GlobalAir"         "AEFCluster"
+Supporting   "OrganicAir"       "AEFCluster"
+Supporting   "VirtualAir"       "AEFCluster"
+Supporting   "VirtualAirlines"  "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"28BW"
+AlternateTypeIdentification	String	"SRC/28BW"
+
+[OrganizationPG]
+Roles Collection<Role> "BomberWing,AEF2-LeadWing,AEFCluster,WingOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "28BW"
+

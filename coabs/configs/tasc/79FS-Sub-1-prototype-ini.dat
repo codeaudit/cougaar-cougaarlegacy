@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/79FS-Sub-1"
+
+[Relationship]
+Superior    "79FS"         ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"79FS-Sub-1"
+AlternateTypeIdentification	String	"SRC/79FS-Sub-1"
+
+[OrganizationPG]
+Roles Collection<Role> "SquadronOrganization,CONUS,SubSquadron"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "79FS-Sub-1"
+

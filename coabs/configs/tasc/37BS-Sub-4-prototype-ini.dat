@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/37BS-Sub-4"
+
+[Relationship]
+Superior    "37BS"         ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"37BS-Sub-4"
+AlternateTypeIdentification	String	"SRC/37BS-Sub-4"
+
+[OrganizationPG]
+Roles Collection<Role> "SquadronOrganization,CONUS,SubSquadron"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "37BS-Sub-4"
+

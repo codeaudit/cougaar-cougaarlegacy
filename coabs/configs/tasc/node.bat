@@ -1,0 +1,2 @@
+@echo off
+%ALP_INSTALL_PATH%/configs/aef-config/nodeAEF AFNode

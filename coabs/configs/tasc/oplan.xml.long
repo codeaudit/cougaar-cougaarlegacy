@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE oplan SYSTEM "oplan.dtd">
+
+<oplan
+	oplanID = "27896"
+	operationName = "Desert Return"
+	priority = "High"
+	cDay = "07/04/2001"
+	theaterId = "SWA"
+	terrainType = "Desert"
+	season = "Summer"
+	enemyForceType = "Conventional Forces"
+	hostNationPOLSupport = "true"
+	hostNationPOLCapability = "1,000,000 gals/day"
+	hostNationWaterSupport = "true"
+	hostNationWaterCapability = "500,000 gals/day">
+	<organization
+		OrgId = "AEF1-1">
+		<orgactivity
+			ActivityName = "AEF1"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CG">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "AI">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+5"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF1-2">
+		<orgactivity
+			ActivityName = "AEF1"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CJ">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SEAD">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+2"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF1-3">
+		<orgactivity
+			ActivityName = "AEF1"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F15C">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "OCA">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+5"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF1-4">
+		<orgactivity
+			ActivityName = "AEF1"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "A10">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "CAS">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "4x4x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+3"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "8x8x6">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "10">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF1-5">
+		<orgactivity
+			ActivityName = "AEF1"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "B52">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "2BW">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SA">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "2">
+			</keyvalue>
+			<timespan
+				startTime = "C+7"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "4x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "2x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "4">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+
+	<organization
+		OrgId = "AEF2-1">
+		<orgactivity
+			ActivityName = "AEF2"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CG">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "AI">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+5"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2-2">
+		<orgactivity
+			ActivityName = "AEF2"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CJ">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SEAD">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+2"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2-3">
+		<orgactivity
+			ActivityName = "AEF2"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F15C">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "OCA">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "5x5x5">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+5"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "15x15x15">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2-4">
+		<orgactivity
+			ActivityName = "AEF2"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "A10">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "CAS">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "4x4x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+3"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "10x10x10">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "8x8x6">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "10">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2-5">
+		<orgactivity
+			ActivityName = "AEF2"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "B52">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "2BW">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SA">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "Low">
+			<keyvalue
+				key = "sortieRate"
+				value = "2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "2">
+			</keyvalue>
+			<timespan
+				startTime = "C+7"
+			  thruTime = "C+15">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "4x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "6">
+			</keyvalue>
+			<timespan
+				startTime = "C+16"
+			  thruTime = "C+120">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "2x2">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "4">
+			</keyvalue>
+			<timespan
+				startTime = "C+121"
+			  thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+
+	<forcepackage
+		ForcePackageId = "AEF1">
+	</forcepackage>
+	<forcepackage
+		ForcePackageId = "AEF2">
+	</forcepackage>
+
+	<Policies>
+ 		<Policy name="StockageLevelPolicy" type="mil.darpa.log.alp.domain.policy.StockageLevelPolicy">
+    		<RuleParam name="DaysOfSupply">
+			<Integer value="7" min="0" max="365">
+			</Integer>
+    		</RuleParam>
+    		<RuleParam name="HostNation">
+    			<Boolean value="false"> </Boolean>
+   		    </RuleParam>
+    		<RuleParam name="WarReserves">
+	       		<Boolean value="false"> </Boolean>
+    		</RuleParam>
+    		<RuleParam name="PrepositionStock">
+				<Boolean value="false"> </Boolean>
+    		</RuleParam>
+  		</Policy>
+	</Policies>
+
+</oplan>
+

@@ -1,0 +1,15 @@
+<!ELEMENT AEF (aefinfo+)>
+<!ELEMENT aefinfo (squadronInfo+)>
+	<!ATTLIST aefinfo
+		aefName  CDATA #REQUIRED
+		leadWing CDATA #REQUIRED>
+
+<!ELEMENT squadronInfo EMPTY>
+	<!ATTLIST squadronInfo
+		squadronName	 CDATA #REQUIRED
+		numberOfAircraft	 CDATA #REQUIRED
+		typeOfAircraft	 CDATA #REQUIRED
+		mission 		 CDATA #REQUIRED
+		OPSTempo		 CDATA #REQUIRED
+		beddownLocation	 CDATA #REQUIRED
+		sortieCommencement CDATA #REQUIRED>

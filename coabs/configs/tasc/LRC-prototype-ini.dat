@@ -1,0 +1,23 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/LRC"
+
+[Relationship]
+Superior      "AFFOR"     "LogisticsReadinessCenter"
+#Supporting    "AvianoAFB"  "FuelSupplyProvider, SparePartsProvider"
+Supporting    "AvianoAFB"  "FuelSupplyProvider"
+
+
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"LRC"
+AlternateTypeIdentification	String	"SRC/LRC"
+
+[OrganizationPG]
+Roles Collection<Role> "LogisticsReadinessCenter,FuelSupplyProvider,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "LRC"

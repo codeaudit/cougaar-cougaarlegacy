@@ -1,0 +1,30 @@
+.Bnr2 {
+	COLOR: #ff6600
+}
+.Bnr2:link {
+	COLOR: #ff6600
+}
+.Bnr2:visited {
+	COLOR: #ff6600
+}
+.Bnr3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; COLOR: #dd0000; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: none
+}
+.redtemps {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #dd0000; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: none
+}
+.greytemps {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #222222; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: none
+}
+.WHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff6600; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: none
+}
+.FSnPSmLt {
+	COLOR: #ffcc99; size: 12px
+}
+.FSnBSmDk12 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial,helvetica,sans-serif
+}
+.BoxTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: arial, helvetica, sans-serif
+}

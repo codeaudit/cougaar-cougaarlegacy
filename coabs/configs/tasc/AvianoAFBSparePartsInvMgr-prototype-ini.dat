@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/AvianoAFBSparePartsInvMgr"
+
+[Relationship]
+Superior    "AvianoAFB"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "AvianoAFBSparePartsInvMgr"
+AlternateTypeIdentification String "SRC/AvianoAFBSparePartsInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "AvianoAFBSparePartsInvMgr"
+

@@ -1,0 +1,24 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/3FW"
+
+[Relationship]
+Superior    "ACC"           ""
+Supporting  "GlobalAir"         "AEFCluster"
+Supporting   "OrganicAir"       "AEFCluster"
+Supporting   "VirtualAir"       "AEFCluster"
+Supporting   "VirtualAirlines"  "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"3FW"
+AlternateTypeIdentification	String	"SRC/3FW"
+
+[OrganizationPG]
+Roles Collection<Role> "FighterWing,AEFCluster,WingOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "3FW"
+

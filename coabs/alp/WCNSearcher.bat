@@ -1,0 +1,1 @@
+java -cp %LIAISON_PATH%\liaison.jar -Djava.security.policy=%LIAISON_JAVA_POLICY% com.prc.alp.liaison.test.WCNSearcher %1 %2 %3 %4 %5 %6 %7 %8 %9

@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="plugins.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="basic.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Liaison Deputies</b></h2>
+<blockquote>
+  <p class="MsoNormal"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">An ALP agent may be supporting several tasks
+  concurrently, and so it may also need to engage in several liaisons with
+  multiple external agents at the same time. To simplify the establishment and
+  control of multiple liaisons, the liaison capability encapsulates a number of
+  higher-level functions in an object called a <code>LiaisonDeputy</code>. These
+  deputies are responsible for representing an ALP cluster as an agent to some
+  external agent society, and for providing interaction housekeeping support.</span></p>
+  <p class="MsoNormal"><span style="font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">Deputies
+  are provided by a <code>LiaisonManager</code>, which produces them on demand
+  according to a given type.&nbsp; Currently, there is only one implemented type
+  of deputy, a <code>CoABSLiaisonDeputy</code>.&nbsp; (Creating a new type of
+  deputy is beyond the scope of this tutorial).</span></p>
+  <p class="MsoNormal">A <code>LiaisonDeputy</code> has several functions which
+  we will explore, but one of its primary duties is to perform any
+  initialization required to open contact between an ALP agent and a particular
+  external agent society.&nbsp; A PlugIn accomplishes this by invoking a
+  deputy's <code>start</code> method; this begins some threads of activity, one
+  of which registers the PlugIn as an agent with the external society (if
+  necessary).&nbsp; A few more lines of code are required (in <font color="#FF0000">red</font>):</p>
+  <blockquote>
+    <pre>import com.prc.alp.liaison.plugin.*;
+<font color="#FF0000">import com.prc.alp.liaison.LConstants;
+import org.cougaar.core.cluster.*;</font>
+
+public class MyLiaisonPlugIn extends SimpleLiaisonPlugIn {
+
+  // Liaison manager -- controls access to potential liaisons
+  private LiaisonManager mgr = null;
+  
+  <font color="#FF0000">// Liaison deputy -- manages interactions with remote agent society
+  //   (CoABS is the only one supported so far)
+  private CoABSLiaisonDeputy dep = null;
+</font><font color="#0000FF">  </font>
+  ... &lt;PlugIn subscriptions, etc.&gt; ...
+
+  protected void setupSubscriptions () {
+    ...
+    // Create a LiaisonManager for the agent Zone27 that belongs to the
+    //   Monitor community of a TrafficControl society
+    mgr = createLiaisonManager(&quot;Zone27&quot;, &quot;Monitor&quot;, &quot;TrafficControl&quot;);
+    mgr.start(true);
+
+    <font color="#FF0000">// Create a deputy</font><font color="#FF0000">
+    CoABSLiaisonDeputy dep = 
+      (CoABSLiaisonDeputy) mgr.createLiaisonDeputy(LConstants.COABS_SOCIETY,
+                                                   getDelegate(),
+                                                   getParameters());
+    dep.start(true);</font></pre>
+    <pre>
+    ...
+  }</pre>
+    <pre>  protected void execute () {
+    ...
+  }
+}</pre>
+  </blockquote>
+  <p align="left">The manager's <code>createLiaisonDeputy</code> method takes 3
+  parameters: a valid agent society type (currently only the one shown is
+  supported), a <code>PlugInDelegate</code>, and a vector of parameters used at
+  construction time.&nbsp; (See the <code> LConstants</code> class for some of the parameters
+  used to configure the <code>CoABSLiaisonDeputy</code>.)</p>
+  <p align="left">Again, as with the <code>LiaisonManager</code>, a deputy
+  doesn't actually begin to work until its <code>start</code> method is
+  called.&nbsp; This initiates a thread of activity to initialize communication
+  with an external agent society; if the boolean parameter is <code>true</code>
+  then <code>start</code> will wait until that initialization is complete before
+  returning; otherwise it will return immediately.</p>
+</blockquote>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="plugins.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="basic.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

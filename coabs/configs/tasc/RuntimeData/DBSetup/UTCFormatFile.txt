@@ -1,0 +1,7 @@
+1,NSN,21,15
+8,Nomenclature,40,18
+15,Height,99,3
+12,Mass,81,6
+13,Length,88,4
+14,Width,93,4
+16,Hazard_Code,103,15

@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<h1>ALP External Agent Liaison Capability Installation Instructions</h1>
+<h2>Prerequisites</h2>
+<p>The ALP Liaison capability requires a number of software packages/products to
+be acquired and installed prior to its own installation.&nbsp; These include:</p>
+<ul>
+  <li>CoABS Grid (v2.0.1alpha only).&nbsp; This software is available through
+    separate license only (see the PDF&nbsp; <a href="000705_CoABS_Grid_SOFTWARE%20LICENSE%20AGREEMENT.pdf">license
+    file</a>).&nbsp; However, the current available Grid software version is
+    past v2.0.0alpha.&nbsp; For now, sign and submit the license request.&nbsp;
+    Following confirmation from you that you have an approved Grid site license,
+    PRC will send you the appropriate Grid software, or you may download it from
+    <a href="http://coabs.globalinfotek.com/coabs_private/private_pages/private_whats_new.html">here</a>
+    once you have access to the Grid site (although additional installation
+    steps not documented here will be needed)..</li>
+  <li>FIPA OS (v1.3.2 only).&nbsp; This software is available through an open
+    source license and will be uploaded separately to the ALP web site, or it
+    may be downloaded from <a href="http://www.nortelnetworks.com/products/announcements/fipa/index.html">here</a>.</li>
+  <li>RETSINA ANS, Grid Interoperator, Weather InfoAgent, and auxiliary RETSINA
+    libraries.&nbsp; This software is available through separate license only
+    (see the <a href="RETSINA%20license.txt">text file</a>) which must be
+    coordinated with Carnegie-Mellon University (contact <a href="mailto:garof+@cs.cmu.edu">Joseph
+    Giampapa</a>).&nbsp; Following confirmation from you that you have an
+    approved license, PRC will send you the appropriate software.</li>
+  <li>Litton TASC AEF ALP demonstration (MB 6.6.1 or later).&nbsp; This is
+    available from Litton TASC; contact <a href="mailto:csallen@tasc.com">Chris
+    Allen</a>.</li>
+  <li>MySQL (currently distributed with the AEF ALP demonstration).</li>
+  <li>Jini (v1.1beta).&nbsp; This software is available through separate license
+    from <a href="http://www.sun.com/jini">Sun's Jini site</a>.</li>
+</ul>
+<h2>Installation</h2>
+<p>Installation of the ALP Liaison capability involves editing the file
+SetLiaisonVars.bat in the bin directory of the Liaison package, and installing
+and configuring each of the prerequisite packages.&nbsp; Begin by setting the
+following variables in SetLiaisonVars.bat:</p>
+<ul>
+  <li><font face="Courier">ALP_INSTALL_PATH</font> -- wherever ALP is installed</li>
+  <li><font face="Courier">AEF_INSTALL_PATH</font> -- some subdirectory under
+    ALP</li>
+  <li><font face="Courier">EXT_INSTALL_PATH</font> -- some subdirectory under
+    ALP (currently assumed to be &quot;ext&quot;).&nbsp; The CoABS Grid, FIPA-OS,
+    and RETSINA software is assumed to be installed in this path.</li>
+  <li><font face="Courier">MACHINE_NAME</font> -- the DNS name of the machine on
+    which the CoABS Grid society will be running</li>
+  <li><font face="Courier">JINI_HOME</font> -- the path where Jini is installed</li>
+  <li><font face="Courier">LIAISON_HOME</font> -- the path where the Liaison
+    capability is installed (some subdirectory under ALP; currently equivalent
+    to <font face="Courier">%ALP_INSTALL_PATH%\com\prc</font>).</li>
+  <li><font face="Courier">LIAISON_JINI_HOST</font> -- the DNS name of the machine on
+    which the ALP Liaison Jini lookup service will be running.&nbsp; When
+    running a single-machine demonstration, this will have the same value as the
+    <font face="Courier">MACHINE_NAME</font> variable (i.e., the demo will use
+    the CoABS Grid as the Jini lookup service.)&nbsp; When running a
+    multi-machine demonstration, this will be some other machine running a Jini
+    lookup service.</li>
+  <li><font face="Courier">LIAISON_APP_HOST</font> -- the DNS name of the machine on
+    which the ALP Liaison demonstration society will be running. This host must
+    have an HTTP server that is configured to supply Liaison proxy objects on
+    request (see demo instructions).&nbsp;</li>
+</ul>
+<h3><i>CoABS Grid</i></h3>
+<p>After the CoABS Grid software is installed (you will need to copy some files
+from the Jini lib directory into the Grid lib directory if you acquired the Grid
+software independently), set the variable <font face="Courier">COABS_HOME</font>
+(in SetLiaisonVars.bat) to the installation directory (currently assumed to be <font face="Courier">%EXT_INSTALL_PATH%\coabs</font>).&nbsp;
+Edit the file coabgrid.props in the directory <font face="Courier">%COABS_HOME%\lib\config</font>
+to reflect the installation path:</p>
+<ul>
+  <li>java.security.policy should be set to a full policy file pathname (i.e.,
+    equivalent to <font face="Courier">%COABS_HOME%\lib\config\policy.all</font>)</li>
+  <li>java.rmi.security.codebase should be set to an HTTP URL consisting of the
+    DNS name of the machine that will be hosting the CoABS Grid service and the
+    associated port.&nbsp; The variables <font face="Courier">LIAISON_JINI_HOST </font>and<font face="Courier">
+    LIAISON_JINI_HTTP_PORT </font>(in SetLiaisonVars.bat) should be set to the
+    same host and port.</li>
+  <li>com.globalinfotek.lookupLocatorURLStrings should be set to a Jini URL
+    consisting of the protocol &quot;jini&quot; and the DNS name of the machine
+    hosting the Grid service (e.g., <font face="Courier">jini://myGridServer</font>);</li>
+</ul>
+<h3><i>FIPA OS</i></h3>
+<p>After the FIPA OS software is installed, set the variable <font face="Courier">FIPAOS_HOME</font>
+(in SetLiaisonVars.bat) to the installation directory (currently assumed to be <font face="Courier">%EXT_INSTALL_PATH%\fipa-os</font>).</p>
+<h3><i>RETSINA</i></h3>
+<p>After the RETSINA software is installed, set the variable <font face="Courier">RETSINA_HOME</font>
+(in SetLiaisonVars.bat) to the installation directory (currently assumed to be <font face="Courier">%EXT_INSTALL_PATH%\retsina</font>).&nbsp;
+<b><font color="#FF0000">USING the Windows Notepad accessory only, </font></b>edit
+and save the file CNNForecastWeather.agent_config in the directory <font face="Courier">%LIAISON_HOME%\configs\retsina
+</font>(CMU has advised that you make sure that word wrap is <i>turned off</i>,
+even though this means a lot of horizontal scrolling is required):</p>
+<ul>
+  <li>the field <font face="Courier">:AgentHost</font> is changed to the DNS
+    name of the machine that will be hosting the RETSINA software</li>
+  <li>the field <font face="Courier">:</font><font face="Courier">InfoSourceURL</font>
+    is changed to the full URL of the directory containing the RETSINA
+    demonstration weather HTML (i.e., equivalent to <font face="Courier"><a href="file:///%25LIAISON_HOME%25/data/html/retsina/">file:///%LIAISON_HOME%\data\html\retsina\</a></font></li>
+  <li>the field <font face="Courier">:</font><font face="Courier">ActionCodeURL</font>
+    is changed to the full URL of the directory containing the RETSINA loadable
+    action classes (i.e., equivalent to <font face="Courier"><a href="file:///%25RETSINA_HOME%25/actions/">file:///%RETSINA_HOME%\actions\</a></font>)</li>
+</ul>
+<p>In the same directory, find and edit the file ANSlistFile (again with
+Notepad) and replace the second token (&quot;hopper&quot; in the distributed
+file) with the DNS name of the machine that will be hosting the RETSINA
+software.</p>
+<h3><i>AEF and MySQL</i></h3>
+<p>Information on installing these products is available separately from Litton
+TASC.&nbsp; Make sure that the MySQL service has been properly configured and
+has been started before running the Liaison demo.&nbsp; (If the installed
+version of AEF uses an Oracle database to store its data files, MySQL is not
+necessary.)&nbsp; Make sure that the
+variable <font face="Courier">AEF_INSTALLATION_PATH</font> is set properly in
+SetLiaisonVars.bat.</p>
+<h3><i>Jini</i></h3>
+<p>No special additional requirements are needed as part of the Jini
+installation.&nbsp; Make sure that the variable <font face="Courier">JINI_HOME</font>
+is set properly in SetLiaisonVars.bat.</p>
+
+</body>
+
+</html>

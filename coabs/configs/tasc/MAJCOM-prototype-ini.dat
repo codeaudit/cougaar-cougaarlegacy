@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/MAJCOM"
+
+[Relationship]
+Superior	    "JFACC"     "MajorCommand"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"MAJCOM"
+AlternateTypeIdentification	String	"SRC/MAJCOM"
+
+[OrganizationPG]
+Roles Collection<Role> "MajorCommand,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "MAJCOM"
+

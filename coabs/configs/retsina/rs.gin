@@ -1,0 +1,373 @@
+(reductionSchema
+  :name "singleShotQueryReduction-1"
+  :taskSchemaName "handleSingleShotQuery"
+  :priority 0
+  :childTaskNames (listof "RunQuery" "SendResults" "SendSorry")
+  :provisionLinks
+    (listof
+     (provisionLink
+	:sourceTask "RunQuery"
+	:sourceTaskOutcome "COMPLETION"
+	:targetTask "SendResults"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "RunQuery"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "SendResults"
+	:provision "RESULTS")
+     (provisionLink
+	:sourceTask "RunQuery"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE"))
+  :provisionInheritanceLinks
+    (listof
+      (provisionInheritanceLink
+	:superTask "handleSingleShotQuery"
+	:superTaskProvision "primary-keys"
+	:subTask "RunQuery"
+	:subTaskProvision "primary-keys"))
+  :outcomePropagateLinks
+    (listof
+     (outcomePropagateLink
+	:subTask "SendResults"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleSingleShotQuery"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendResults"
+	:subTaskOutcome "FAIL"
+	:superTask "handleSingleShotQuery"
+	:superTaskOutcome "FAIL")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleSingleShotQuery"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "FAIL"
+	:superTask "handleSingleShotQuery"
+	:superTaskOutcome "FAIL")))
+
+
+(reductionSchema
+  :name "handlePassiveMonitorReduction"
+  :taskSchemaName "handlePassiveMonitor"
+  :priority 0
+  :childTaskNames (listof "SendResultsMonitor" "StopMonitor" "EnableUpdatesMonitor" "DisableUpdatesMonitor" "SendSorry" "Init")
+  :provisionLinks
+    (listof
+     (provisionLink
+	:sourceTask "DisableUpdatesMonitor"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "EARLY-TERMINATION"
+	:targetTask "DisableUpdatesMonitor"
+	:provision "DISABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "COMPLETION"
+	:targetTask "DisableUpdatesMonitor"
+	:provision "DISABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "INIT-FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "EnableUpdatesMonitor"
+	:provision "MONITOR-READY")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "DisableUpdatesMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "EnableUpdatesMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "StopMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "EnableUpdatesMonitor"
+	:provision "RUN-IT")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "SendResultsMonitor"
+	:provision "RESULTS")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR")
+     (provisionLink
+	:sourceTask "EnableUpdatesMonitor"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR"))
+  :provisionInheritanceLinks
+    (listof)
+  :outcomePropagateLinks
+    (listof
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "FAIL"
+	:superTask "handlePassiveMonitor"
+	:superTaskOutcome "FAIL")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handlePassiveMonitor"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "DisableUpdatesMonitor"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handlePassiveMonitor"
+	:superTaskOutcome "COMPLETION")))
+
+(reductionSchema
+  :name "handleDataUpdateReduction"
+  :taskSchemaName "handleDataUpdate"
+  :priority 0
+  :childTaskNames (listof "UpdateRecord" "SendSorry")
+  :provisionLinks
+    (listof
+     (provisionLink
+	:sourceTask "UpdateRecord"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE"))
+  :provisionInheritanceLinks
+    (listof)
+  :outcomePropagateLinks
+    (listof
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleDataUpdate"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "FAIL"
+	:superTask "handleDataUpdate"
+	:superTaskOutcome "FAIL")
+     (outcomePropagateLink
+	:subTask "UpdateRecord"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleDataUpdate"
+	:superTaskOutcome "COMPLETION")))
+
+(reductionSchema
+  :name "handleMonitorQueryReduction-A"
+  :taskSchemaName "handleMonitorQuery"
+  :priority 0
+  :childTaskNames (listof "SendSorry" "Init" "SendResultsMonitor" "RunQueryMonitor" "StopMonitor")
+  :provisionLinks
+    (listof
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "EARLY-TERMINATION"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "INIT-FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "StopMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "RunQueryMonitor"
+	:provision "MONITOR-READY")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-FAIL"
+	:targetTask "SendSorry"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "StopMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "INIT-SUCCESS"
+	:targetTask "RunQueryMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "RunQueryMonitor"
+	:provision "RUN-IT")
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "RunQueryMonitor"
+	:provision "RUN-IT")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "SendResultsMonitor"
+	:provision "RESULTS")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "StopMonitor"
+	:provision "UNMONITOR")
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "primary-keys"
+	:targetTask "RunQueryMonitor"
+	:provision "primary-keys")
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "period"
+	:targetTask "RunQueryMonitor"
+	:provision "period")
+     (provisionLink
+	:sourceTask "SendResultsMonitor"
+	:sourceTaskOutcome "trigger"
+	:targetTask "SendResultsMonitor"
+	:provision "trigger")
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "primary-keys"
+	:targetTask "SendResultsMonitor"
+	:provision "primary-keys")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "MONITOR-ID"
+	:targetTask "StopMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "Init"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "RunQueryMonitor"
+	:provision "MONITOR-ID")
+     (provisionLink
+	:sourceTask "RunQueryMonitor"
+	:sourceTaskOutcome "MONITOR-ID"
+	:targetTask "RunQueryMonitor"
+	:provision "MONITOR-ID"))
+
+  :provisionInheritanceLinks
+    (listof
+     (provisionInheritanceLink
+	:superTask "handleMonitorQuery"
+	:superTaskProvision "primary-keys"
+	:subTask "RunQueryMonitor"
+	:subTaskProvision "primary-keys")
+     (provisionInheritanceLink
+	:superTask "handleMonitorQuery"
+	:superTaskProvision "period"
+	:subTask "RunQueryMonitor"
+	:subTaskProvision "period")
+     (provisionInheritanceLink
+	:superTask "handleMonitorQuery"
+	:superTaskProvision "trigger"
+	:subTask "SendResultsMonitor"
+	:subTaskProvision "trigger"))
+  :outcomePropagateLinks
+    (listof
+     (outcomePropagateLink
+	:subTask "StopMonitor"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "FAIL"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "FAIL")
+     (outcomePropagateLink
+	:subTask "SendSorry"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "COMPLETION")))
+
+/*
+(reductionSchema
+  :name "handleMonitorQueryReduction-1"
+  :taskSchemaName "handleMonitorQuery"
+  :priority 0
+  :childTaskNames (listof "RunQueryMonitor1" "SendResultsMonitor" "SendSorryMonitor" "Counter")
+  :provisionLinks
+    (listof
+     (provisionLink
+	:sourceTask "RunQueryMonitor1"
+	:sourceTaskOutcome "COMPLETION"
+	:targetTask "SendResultsMonitor"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "RunQueryMonitor1"
+	:sourceTaskOutcome "SUCCESS"
+	:targetTask "SendResultsMonitor"
+	:provision "RESULTS")
+     (provisionLink
+	:sourceTask "RunQueryMonitor1"
+	:sourceTaskOutcome "FAIL"
+	:targetTask "SendSorryMonitor"
+	:provision "ENABLE")
+     (provisionLink
+	:sourceTask "Counter"
+	:sourceTaskOutcome "COMPLETION"
+	:targetTask "RunQueryMonitor1"
+	:provision "ENABLE"))
+  :provisionInheritanceLinks
+    (listof)
+  :outcomePropagateLinks
+    (listof
+     (outcomePropagateLink
+	:subTask "SendResultsMonitor"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendResultsMonitor"
+	:subTaskOutcome "FAIL"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "FAIL")
+     (outcomePropagateLink
+	:subTask "SendSorryMonitor"
+	:subTaskOutcome "COMPLETION"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "COMPLETION")
+     (outcomePropagateLink
+	:subTask "SendSorryMonitor"
+	:subTaskOutcome "FAIL"
+	:superTask "handleMonitorQuery"
+	:superTaskOutcome "FAIL")))
+*/

@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/FujairahAFB"
+
+[Relationship]
+Superior    "ACC"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"FujairahAFB"
+AlternateTypeIdentification	String	"SRC/FujairahAFB"
+
+[OrganizationPG]
+Roles Collection<Role> "AirForceBase,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "FujairahAFB"
+

@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/20BS"
+
+[Relationship]
+Superior    "2BW"           ""
+Supporting  "HQ-USAF-XOP"   "B52-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"20BS"
+AlternateTypeIdentification String	"SRC/20BS"
+
+[OrganizationPG]
+Roles Collection<Role> "BomberSquadron,AEF9-Role-Bomber,B52-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "20BS"
+

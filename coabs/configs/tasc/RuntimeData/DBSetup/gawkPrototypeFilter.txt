@@ -1,0 +1,33 @@
+{print "[",$4,"]"}
+{print "volume=",$8*$9*$10}
+{print "footprint_area=",$8*$9}
+{if ($10 >= 0)
+  {print "height=",$10}
+else
+  {print "height=0"}
+}
+{if ($11 >= 0)
+  {print "hazard_code=",$11}
+else
+  {print "hazard_code=' ' "}
+}
+{if ($8 >= 0)
+  {print "length=",$8}
+else
+  {print "length=0"}
+}
+{if ($9 >= 0)
+  {print "width=",$9}
+else
+  {print "width=0"}
+}
+{print "nomenclature=",$3}
+{print "class=",$16}
+{if ($7 >= 0)
+  {print "mass=",$7,"\n"}
+else
+  {print "mass=0","\n"}
+}
+
+
+

@@ -1,0 +1,23 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/JFACC"
+
+[Relationship]
+Supporting  "GlobalAir"         "AEFCluster"
+Supporting   "OrganicAir"       "AEFCluster"
+Supporting   "VirtualAir"       "AEFCluster"
+Supporting   "VirtualAirlines"  "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "JFACC"
+AlternateTypeIdentification	String  "SRC/JFACC"
+
+[OrganizationPG]
+Roles Collection<Role> "JointForcesAirCommandControl"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "JFACC"
+

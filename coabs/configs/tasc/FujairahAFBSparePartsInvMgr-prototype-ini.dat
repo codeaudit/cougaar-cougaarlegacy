@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/FujairahAFBSparePartsInvMgr"
+
+[Relationship]
+Superior    "FujairahAFB"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "FujairahAFBSparePartsInvMgr"
+AlternateTypeIdentification String "SRC/FujairahAFBSparePartsInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "FujairahAFBSparePartsInvMgr"
+

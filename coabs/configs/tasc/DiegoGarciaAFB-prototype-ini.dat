@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/DiegoGarciaAFB"
+
+[Relationship]
+Superior    "ACC"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"DiegoGarciaAFB"
+AlternateTypeIdentification	String	"SRC/DiegoGarciaAFB"
+
+[OrganizationPG]
+Roles Collection<Role> "AirForceBase,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "DiegoGarciaAFB"
+

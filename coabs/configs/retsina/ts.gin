@@ -1,0 +1,262 @@
+(taskSchema
+  :name "handleDataUpdate"
+  :objectiveName "tellInformation"
+  :isTopLevel true
+  :isAction false
+  :isPeriodic false
+  :parameters
+    (listof
+     (field :name "primary-keys" :values (enum "present") :editorType "")
+     (field :name "new-record" :values (enum "present") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "yes") :editorType "FAIL"))
+  :provisions
+    (listof)
+)
+
+(taskSchema
+  :name "UpdateRecord"
+  :objectiveName "UpdateRecord"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof
+     (field :name "new-record" :values (enum "present") :editorType "")
+     (field :name "primary-keys" :values (enum "present") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "enable") :editorType "FAIL"))
+  :provisions
+    (listof))
+
+(taskSchema
+  :name "handlePassiveMonitor"
+  :objectiveName "getInformation"
+  :isTopLevel true
+  :isAction false
+  :isPeriodic false
+  :parameters
+    (listof
+     (field :name "primary-keys" :values (enum "present") :editorType "")
+     (field :name "trigger" :values (enum "present") :editorType "")
+     (field :name "sources" :values (enum "present") :editorType "")
+     (field :name "source-triggers" :values (enum "present") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "yes") :editorType "FAIL"))
+  :provisions
+    (listof)
+)
+
+(taskSchema
+  :name "EnableUpdatesMonitor"
+  :objectiveName "EnableUpdatesMonitor"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic true
+  :parameters
+    (listof
+     (field :name "primary-keys" :values (enum "present") :editorType "")
+     (field :name "sources" :values (enum "present") :editorType "")
+     (field :name "source-triggers" :values (enum "present") :editorType "")
+     (field :name "MONITOR-ID" :values (enum "enabled") :editorType "")
+     (field :name "MONITOR-READY" :values (enum "enabled") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "FAIL" :values (enum "kill-monitor") :editorType "FAIL")
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT"))
+  :provisions
+    (listof
+     (field :name "RUN-IT" :values (enum "init" "external-message") :editorType "")))
+
+(taskSchema
+  :name "DisableUpdatesMonitor"
+  :objectiveName "DisableUpdatesMonitor"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof
+     (field :name "MONITOR-ID" :values (enum "enabled" "yes") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "enable") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "DISABLE" :values (enum "yes" "enable") :editorType "")))
+
+(taskSchema
+  :name "handleMonitorQuery"
+  :objectiveName "getInformation"
+  :isTopLevel true
+  :isAction false
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "server-down" "busy") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "period" :values (enum "present") :editorType "")
+     (field :name "trigger" :values (enum "present") :editorType "")
+     (field :name "primary-keys" :values (enum "present") :editorType "")))
+
+(taskSchema
+  :name "SendResultsMonitor"
+  :objectiveName "SendResultsMonitor"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic true
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "kill-monitor") :editorType "FAIL")
+     (field :name "INIT-SUCCESS" :values (enum "enabled") :editorType "")
+     (field :name "INIT-FAIL" :values (enum "enabled") :editorType "")
+     (field :name "trigger" :values (enum "present") :editorType ""))
+  :provisions
+    (listof
+     (field :name "trigger" :values (enum "present") :editorType "")
+     (field :name "primary-keys" :values (enum "present") :editorType "")
+     (field :name "RESULTS" :values (enum "init" "result") :editorType "")))
+
+(taskSchema
+  :name "StopMonitor"
+  :objectiveName "StopMonitor"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof
+     (field :name "MONITOR-ID" :values (enum "enabled") :editorType ""))
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "yes") :editorType "FAIL")
+     (field :name "INIT-SUCCESS" :values (enum "enabled") :editorType "")
+     (field :name "INIT-FAIL" :values (enum "enabled") :editorType "")
+     (field :name "EARLY-TERMINATION" :values (enum "enabled") :editorType ""))
+  :provisions
+    (listof
+     (field :name "UNMONITOR" :values (enum "init" "kill-monitor" "shutdown" "external-message") :editorType "")))
+
+
+(taskSchema
+  :name "RunQueryMonitor"
+  :objectiveName "RunQueryMonitor"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic true
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "SUCCESS" :values (enum "present") :editorType "DEFAULT")
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "kill-monitor") :editorType "FAIL")
+     (field :name "primary-keys" :values (enum) :editorType "FAIL")
+     (field :name "period" :values (enum "present") :editorType "")
+     (field :name "MONITOR-ID" :values (enum "enabled") :editorType "") )
+  :provisions
+    (listof
+     (field :name "period" :values (enum "present") :editorType "")
+     (field :name "MONITOR-READY" :values (enum "enabled") :editorType "")
+     (field :name "MONITOR-ID" :values (enum "enabled") :editorType "") 
+     (field :name "RUN-IT" :values (enum "init" "clock") :editorType "")
+     (field :name "primary-keys" :values (enum "present") :editorType "")))
+
+(taskSchema
+  :name "Init"
+  :objectiveName "Init"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "MONITOR-ID" :values (enum "enabled") :editorType "") 
+     (field :name "SUCCESS" :values (enum "init") :editorType "DEFAULT")
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT"))
+  :provisions
+    (listof))
+
+
+(taskSchema
+  :name "handleSingleShotQuery"
+  :objectiveName "getInformation"
+  :isTopLevel true
+  :isAction false
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "server-down" "busy") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "primary-keys" :values (enum "present") :editorType "")))
+
+
+(taskSchema
+  :name "RunQuery"
+  :objectiveName "RunQuery"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "SUCCESS" :values (enum "enabled") :editorType "DEFAULT")
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "server-down" "busy") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "primary-keys" :values (enum "present") :editorType "")))
+	
+(taskSchema
+  :name "SendResults"
+  :objectiveName "SendResults"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "server-down" "busy") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "RESULTS" :values (enum "enabled") :editorType "")
+     (field :name "ENABLE" :values (enum "yes" "no") :editorType "")))
+
+(taskSchema
+  :name "SendSorry"
+  :objectiveName "SendSorry"
+  :isTopLevel false
+  :isAction true
+  :isPeriodic false
+  :parameters
+    (listof)
+  :outcomes
+    (listof
+     (field :name "COMPLETION" :values (enum "yes" "no") :editorType "DEFAULT")
+     (field :name "FAIL" :values (enum "yes") :editorType "FAIL"))
+  :provisions
+    (listof
+     (field :name "ENABLE" :values (enum "server-down" "busy" "enabled") :editorType "")))
+
+

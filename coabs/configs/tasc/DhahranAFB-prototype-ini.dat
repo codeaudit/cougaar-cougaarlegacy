@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/DhahranAFB"
+
+[Relationship]
+Superior    "ACC"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"DhahranAFB"
+AlternateTypeIdentification	String	"SRC/DhahranAFB"
+
+[OrganizationPG]
+Roles Collection<Role> "AirForceBase,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "DhahranAFB"
+

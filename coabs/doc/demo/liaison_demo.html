@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>ALP External Agent Liaison Capability Demo Instructions</title>
+</head>
+
+<body>
+
+<h1>ALP External Agent Liaison Capability Demo Instructions</h1>
+<h2>Preparation</h2>
+<p>Running the ALP Liaison capability demo involves bringing up two other
+complex software frameworks besides ALP: the CoABS Grid and RETSINA.&nbsp; All
+of the run-time preparation work is accomplished by scripts in the Liaison bin
+directory.&nbsp; (The instructions assume you double-click on these scripts from
+an Explorer window).</p>
+<h3><i>Starting the CoABS Grid</i></h3>
+<ul>
+  <li>Run the script StartCoABSGrid.bat.&nbsp; </li>
+  <li>A command prompt window and a GUI window will open.&nbsp; </li>
+  <li>In the GUI window click on the &quot;Delete logs&quot; button.&nbsp; </li>
+  <li>Then click on the &quot;Start Grid Daemons&quot; button.&nbsp; </li>
+  <li>Then select the &quot;Daemon Output&quot; tab and wait for a confirmation
+    line to appear in the HTTP output pane.&nbsp; </li>
+  <li>Select the &quot;Grid Controls&quot; tab and click on the &quot;Start
+    Logger Agent&quot; button.&nbsp; </li>
+  <li>Select the &quot;Daemon Output&quot; tab and wait for a second
+    confirmation line to appear in the HTTP output pane.&nbsp; </li>
+  <li>Select the &quot;Grid Status&quot; tab and fill in the field at the top
+    with the DNS name of the machine the Grid is running on.&nbsp; </li>
+  <li>Click on the &quot;Find Agents&quot; button.&nbsp; </li>
+  <li>In a few second the display should change to show 2 registered agents;
+    this confirms that the Grid is functional.&nbsp; </li>
+  <li>You may shrink both the GUI window and the command prompt window.</li>
+</ul>
+<h3><i>Starting RETSINA</i></h3>
+<ul>
+  <li>Run the script StartRETSINAANS.bat.</li>
+  <li>A command prompt window will open.&nbsp; There will be some debug output,
+    including a couple of warning messages about files not existing or not being
+    readable; this is normal and my be ignored.</li>
+  <li>You may shrink the command prompt window.</li>
+  <li>Run the script StartRETSINAForecastWeatherAgent.bat.</li>
+  <li>A command prompt window and a GUI window will open.</li>
+  <li>The GUI window will show two error messages; this is normal.&nbsp; You may
+    shrink this window.</li>
+  <li>Wait for the command prompt window to show &quot;Ready to receive
+    objectives&quot; and then you may shrink it.</li>
+  <li>Run the script StartRETSINAForecastInteroperator.bat.</li>
+  <li>A command prompt window will open.</li>
+  <li>Wait for the command prompt window to show a line that says
+    &quot;done.&quot; and then you may shrink it.&nbsp; (Occasionally the
+    interoperator doesn't quite flush out this message but it still seems to
+    work OK).</li>
+  <li>Run the script StartRETSINAANSTest.bat.</li>
+  <li>A command prompt window will open.</li>
+  <li>At the ANS prompt, type <font face="Courier">list all</font>.</li>
+  <li>Two agents should be listed (InterOp and CNNForecastWeatherAgent).&nbsp;
+    This verifies that the RETSINA ANS, Interoperator, and Weather Agent are all
+    functional.</li>
+  <li>Type quit and the command prompt window will disappear.</li>
+</ul>
+<h3><i>Liaison demo preparation</i></h3>
+<p>If you are running a multi-machine demonstration, you must first start up
+some supporting RMI and Jini processes:</p>
+<ul>
+  <li>Run the script StartJiniRMID.bat on the LIAISON_JINI_HOST (this must be a
+    different machine from the one hosting the CoABS Grid service).</li>
+  <li>A command prompt window will open.</li>
+  <li>At the prompt, answer Y.</li>
+  <li>You may shrink this window.</li>
+  <li>Run the script StartJiniWeb.bat on the LIAISON_JINI_HOST.</li>
+  <li>A command prompt window will open.</li>
+  <li>You may shrink this window.</li>
+  <li>Run the script StartJiniLookup.bat on the LIAISON_JINI_HOST.</li>
+  <li>A command prompt window will open and then disappear in a few seconds.</li>
+</ul>
+<p>You are now ready to start the Liaison demo JavaSpace service and the HTTP
+service supporting download of liaison proxy objects upon request.</p>
+<ul>
+  <li>Run the script StartJiniTransactions.bat.</li>
+  <li>A command prompt window will open.</li>
+  <li>At the prompt, answer Y.</li>
+  <li>In a few seconds the window will disappear.</li>
+  <li>Run the script StartTransientJavaSpace.bat.</li>
+  <li>A command prompt window will open.</li>
+  <li>You may shrink this window.</li>
+  <li>Run the script StartAppWeb.bat on the host where the ALP Liaison
+    demonstration society will be running.</li>
+  <li>A command prompt window will open.</li>
+  <li>You may shrink this window.</li>
+</ul>
+<h2>Liaison Demo</h2>
+<p>After all of the preceding setup has been performed, you may run the Liaison
+demo:</p>
+<ul>
+  <li>Open a command prompt window.</li>
+  <li>Change to the Liaison alp directory.</li>
+  <li>Run the script liaisondemo.bat.</li>
+  <li>As PlugIns load, a number of Java windows will open.</li>
+  <li>After all PlugIns have loaded (the text &quot;Plugins Loaded&quot; will
+    appear in the command prompt window), click on the &quot;Propagate OPlan 2001
+    Scenario&quot; button in the JFACC window.</li>
+  <li>Then click on the &quot;GetLogSupport 2001 Scenario&quot; button.</li>
+  <li>In addition to the normal heartbeat and message characters (&quot;.&quot;,
+    &quot;+&quot;, and &quot;-&quot;), some debug output and error messages &quot;unable to allocate AEF to SubSquadron,&quot;
+    &quot;ConsumerSpec was null,&quot; and &quot;##GLM_ERROR##&quot; may appear; these are OK (for demo
+    purposes).</li>
+  <li>Eventually, the message &quot;CoABSRegistryInteractor waiting for
+    permission&quot; will appear (and repeat periodically).</li>
+  <li>In another command prompt window, or directly from an Explorer window, run
+    the script runTool.bat from the Liaison alp directory.</li>
+  <li>The ALP Liaison administration tool GUI will appear.</li>
+  <li>From the ALP Society menu choose &quot;ALP_Society&quot;.</li>
+  <li>After the society appears in the left pane, choose &quot;CoABSGrid&quot;
+    from the External Society menu.</li>
+  <li>Select and modify the ALP_Society society and Transport neighborhood (one
+    at a time) from the left pane so that they delegate permission settings for
+    their subordinates.</li>
+  <li>Select the GlobalAir agent in the left pane.</li>
+  <li>Select the Registry (LookupDiscovery) and CNNForecastWeatherAgent agents
+    from the right pane (one at a time) and modify their permissions so that
+    GlobalAir may inititiate interactions with them.</li>
+  <li>You may close the administration GUI window.</li>
+  <li>Some <font face="Courier">&quot;[&quot; </font>and<font face="Courier">
+    &quot;]&quot;</font> characters will appear in the original command prompt
+    window.&nbsp; These indicate that the
+    ALP society is interacting with the Grid and the RETSINA Weather Agent.</li>
+  <li>Start a browser and open the URL <a href="http://%3cALP_host_name%3e:5555/$GlobalAir/liaison/demo/WEATHER_IMPACT.PSP">http://&lt;ALP_host_name>:5555/$GlobalAir/liaison/demo/WEATHER_IMPACT.PSP</a>.&nbsp;
+    You will see a display of weather forecasts, their expected impact, and the
+    tasks they affect.&nbsp; Selecting a task will show the details for that
+    task's itinerary and how it will be affected by the forecast weather
+    conditions.</li>
+</ul>
+
+</body>
+
+</html>

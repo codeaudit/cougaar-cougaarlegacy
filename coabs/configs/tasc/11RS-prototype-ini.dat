@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/11RS"
+
+[Relationship]
+Superior    "99RW"          ""
+Supporting  "HQ-USAF-XOP"   "UAV-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"11RS"
+AlternateTypeIdentification	String	"11RS"
+
+[OrganizationPG]
+Roles Collection<Role> "ReconnaissanceSquadron,AEF2-Role-Reconnaissance,UAV-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier "11RS"
+

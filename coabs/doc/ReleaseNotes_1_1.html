@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<h1 align="left">ALP External Agent Liaison Capability Release Notes</h1>
+<h2 align="left">Current Version: 1.1</h2>
+<h2 align="left">Latest Release Version: 1.1</h2>
+<h2 align="left">Latest Release Date: 4/30/2001</h2>
+<h3 align="left">Summary</h3>
+<p align="left">This is the final release of the liaison capability (until such
+time as someone chooses to fund further development).&nbsp; Significant new
+capabilities include improved handling of interaction protocol errors (timeouts
+and improper messages), and automatically creating interactions when initiated
+by an external agent.&nbsp; Complete Javadocs are now available at the overview,
+package, and class levels.</p>
+<h3 align="left">Version 1.1 changes from prior release (version 1.0)</h3>
+<h4 align="left">New capabilities and improvements</h4>
+<ul>
+  <li>
+    <p align="left">Interactions now execute under the constraints of timeouts,
+    which can be specified at the level of an entire interaction and at the
+    level of individual actions within an interaction.&nbsp; For example,&nbsp;a
+    time limit of 30 seconds could be specified for a particular <code>receive</code>
+    action, and a time limit of 45 seconds could be specified for the entire
+    interaction which includes the given <code>receive</code> action.&nbsp; If
+    either timeout limit is exceeded, the responsible interactor is given an
+    opportunity to take corrective or clean-up actions.</li>
+  <li>
+    <p align="left">PlugIns can now create an <code>InteractionFactory</code>
+    which will construct new interactions on demand more easily.&nbsp; These factories are primarily
+    intended for use by a <code> LiaisonDeputy</code> that needs to be able to spawn new
+    interactions in response to requests made by external agents; however, they could
+    also be used for initiating interactions by ALP/Cougaar agents as well.</li>
+  <li>
+    <p align="left">A default <code>InteractionFactory</code> and <code>Interactor</code>
+    have been provided to handle unexpected or uninterpretable messages received
+    from the CoABS Grid.&nbsp; The new <code>CoABSDefaultInteractor</code>
+    returns a &quot;not-understood&quot; message to the originator (assuming
+    that can be determined); this ability enables the liaison capability to be
+    Grid-compliant.</li>
+  <li>
+    <p align="left">Documentation has been provided in several forms:
+    <ul>
+      <li>
+        <p align="left">Complete <a href="javadoc/index.html">Javadoc
+        documentation</a> at the overview, package, and class/interface levels</li>
+      <li>
+        <p align="left">A <a href="javadoc/com/prc/alp/liaison/doc-files/ALP%20External%20Agent%20Liaison%201200.ppt">PowerPoint
+        presentation</a> (also in <a href="javadoc/com/prc/alp/liaison/doc-files/ALP%20External%20Agent%20Liaison%201200.html">HTML</a>)
+        describing the liaison capability</li>
+      <li>
+        <p align="left">A <a href="tutorial/index.html">tutorial</a> with
+        simplified example code for applying the liaison capability.</li>
+    </ul>
+  </li>
+</ul>
+<h4 align="left">Bug fixes</h4>
+<ul>
+  <li>
+    <p align="left">None.</li>
+</ul>
+<h4 align="left">Installation information</h4>
+<p align="left">See <a href="install/index.html">the installation instructions.</a></p>
+<h3 align="left">Summary</h3>
+<p align="left">This is primarily a compatibility upgrade for the ALP external agent
+liaison capability.&nbsp; It is now compatible with ALP/Cougaar mini-build
+version 7.0.0.</p>
+<h3 align="left">Version 1.0.1 changes from prior release (version 1.0)</h3>
+<h4 align="left">New capabilities and improvements</h4>
+<ul>
+  <li>
+    <p align="left">All references to packages within the &quot;alp.*&quot; and
+    &quot;mil.darpa.log.alp.*&quot; package trees were replaced with the
+    appropriate &quot;org.cougaar&quot; package references.&nbsp; This maintains
+    compatibility with the released ALP/Cougaar mini-build version 7.0.0 as well
+    as with the matching version of the Litton TASC AEF society.</li>
+  <li>
+    <p align="left">A new RETSINA information agent (WCNForecastWeatherAgent)
+    was implemented to extract weather forecast data from the Weather Channel
+    web site.&nbsp; A tool for scanning Weather Channel web pages to find
+    particular weather examples was implemented.&nbsp; The LiaisonTest
+    object/application was modified to interact with this new agent, and the
+    RETSINA interoperator scripts were modified to allow multiple interoperators
+    to run at the same time.</li>
+</ul>
+<h4 align="left">Bug fixes</h4>
+<ul>
+  <li>
+    <p align="left">None.</li>
+</ul>
+<h3 align="left">Version 1.0 changes from prior release (version 0.9)</h3>
+<h4 align="left">New capabilities and improvements</h4>
+<ul>
+  <li>
+    <p align="left">The ALP weather forecasting task was split into a weather
+    requirement task (one per affected prepare-for-transport task) and a
+    get-forecast task.&nbsp; Get-forecast tasks are now multi-parent tasks that
+    are a composition of multiple weather requirement tasks representing the
+    same location and date.&nbsp; The WeatherLiaisonPlugIn now updates
+    get-forecast results from forecast data acquired via the Grid, and the
+    weather trigger updates the itinerary of the affected prepare-for-transport
+    tasks when the results flow back through the task compositions.&nbsp; The
+    weather trigger also saves the original itineraries for later display and
+    comparison.&nbsp; Defunct weather requirements (for past-current dates or
+    for unknown locations) are correctly purged from the plan.</li>
+  <li>
+    <p align="left">A new PSP exists (liaison/demo/WEATHER_IMPACT.PSP) that
+    displays the results of weather forecast requests and their impact on
+    prepare-for-transport tasks.</li>
+  <li>
+    <p align="left">A software brake that regulated the speed of spawning new
+    queries to the RETSINA information agent has been removed.</li>
+  <li>
+    <p align="left">Portions of the Liaison Administration Tool GUI were
+    implemented with multiple threads to improve apparent response times.</li>
+</ul>
+<h4 align="left">Bug fixes</h4>
+<ul>
+  <li>
+    <p align="left">Corrected a race condition which caused the Liaison
+    Administration Tool GUI to fail to update liaison status properly under
+    certain circumstances.</li>
+</ul>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]  "UIC/TRANSCOM"
+
+[Relationship]
+Superior      "AEFC"           "StrategicTransportationProvider"
+Supporting    "ACC"            "StrategicTransportationProvider"
+Supporting    "JFACC"          "StrategicTransportationProvider"
+Supporting    "388FW"          "StrategicTransportationProvider"
+Supporting    "421FS"          "StrategicTransportationProvider"
+Supporting    "2BW"            "StrategicTransportationProvider"
+Supporting    "96BS"           "StrategicTransportationProvider"
+Supporting    "20FW"           "StrategicTransportationProvider"
+Supporting    "79FS"           "StrategicTransportationProvider"
+Supporting    "3FW"            "StrategicTransportationProvider"
+Supporting    "19FS"           "StrategicTransportationProvider"
+Supporting    "23FW"           "StrategicTransportationProvider"
+Supporting    "75FS"           "StrategicTransportationProvider"
+Supporting    "28BW"           "StrategicTransportationProvider"
+Supporting    "37BS"           "StrategicTransportationProvider"
+Supporting    "52FW"           "StrategicTransportationProvider"
+Supporting    "23FS"           "StrategicTransportationProvider"
+Supporting    "48FW"           "StrategicTransportationProvider"
+Supporting    "494FS"          "StrategicTransportationProvider"
+Supporting    "33FW"           "StrategicTransportationProvider"
+Supporting    "60FS"           "StrategicTransportationProvider"
+Supporting    "9RW"            "StrategicTransportationProvider"
+Supporting    "9RS"            "StrategicTransportationProvider"
+Supporting    "99RW"           "StrategicTransportationProvider"
+Supporting    "11RS"           "StrategicTransportationProvider"
+#Supporting    "27FW"           "StrategicTransportationProvider"
+#Supporting    "18W"            "StrategicTransportationProvider"
+#Supporting    "4FW"            "StrategicTransportationProvider"
+#Supporting    "44FS"           "StrategicTransportationProvider"
+#Supporting    "336FS"          "StrategicTransportationProvider"
+#Supporting    "22FS"           "StrategicTransportationProvider"
+#Supporting    "81FS"           "StrategicTransportationProvider"
+#Supporting    "20BS"           "StrategicTransportationProvider"
+Supporting    "WRM"            "StrategicTransportationProvider"
+Supporting    "AvianoAFB"      "StrategicTransportationProvider"
+Supporting    "PrinceSultanAFB" "StrategicTransportationProvider"
+Supporting    "DhahranAFB"     "StrategicTransportationProvider"
+Supporting    "FujairahAFB"    "StrategicTransportationProvider"
+Supporting    "DiegoGarciaAFB" "StrategicTransportationProvider"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"TRANSCOM"
+AlternateTypeIdentification String  ""
+
+[OrganizationPG]
+Roles Collection<Role> "StrategicTransportationProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "TRANSCOM"
+

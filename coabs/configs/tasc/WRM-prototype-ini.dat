@@ -1,0 +1,24 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/WRM"
+
+[Relationship]
+Superior    "JFACC"         ""
+Supporting  "GlobalAir"         "AEFCluster"
+Supporting   "OrganicAir"       "AEFCluster"
+Supporting   "VirtualAir"       "AEFCluster"
+Supporting   "VirtualAirlines"  "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"WRM"
+AlternateTypeIdentification	String	"SRC/WRM"
+
+[OrganizationPG]
+Roles Collection<Role> "WRMSupply,AEFCluster,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "WRM"
+

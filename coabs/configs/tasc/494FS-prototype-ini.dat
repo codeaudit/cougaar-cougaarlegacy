@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/494FS"
+
+[Relationship]
+Superior    "48FW"          ""
+Supporting  "HQ-USAF-XOP"   "F15E-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"494FS"
+AlternateTypeIdentification	String	"SRC/494FS"
+
+[OrganizationPG]
+Roles Collection<Role> "FighterSquadron,AEF2-Role-MultiRoleFighter,F15E-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "494FS"
+

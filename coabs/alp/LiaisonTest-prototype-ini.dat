@@ -1,0 +1,14 @@
+[Prototype]     Organization
+        
+[UIC]		"LiaisonTest"
+
+[Relationship]
+        
+[TypeIdentificationPG]                      
+TypeIdentification		String	"LiaisonTest Organization"
+Nomenclature			String	"LiaisonTest"
+AlternateTypeIdentification	String	"LiaisonTest Cluster"
+
+[OrganizationPG]
+Roles	Collection<Role>  "Testing"
+

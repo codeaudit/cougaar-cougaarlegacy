@@ -1,0 +1,24 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/9RW"
+
+[Relationship]
+Superior    "ACC"             ""
+Supporting  "GlobalAir"       "AEFCluster"
+Supporting  "OrganicAir"      "AEFCluster"
+Supporting  "VirtualAir"      "AEFCluster"
+Supporting  "VirtualAirlines" "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"9RW"
+AlternateTypeIdentification	String	"SRC/9RW"
+
+[OrganizationPG]
+Roles Collection<Role> "ReconnaissanceWing,AEFCluster,WingOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "9RW"
+

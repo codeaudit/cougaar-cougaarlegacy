@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/96BS"
+
+[Relationship]
+Superior    "2BW"           ""
+Supporting  "HQ-USAF-XOP"   "B52-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"96BS"
+AlternateTypeIdentification String	"SRC/96BS"
+
+[OrganizationPG]
+Roles Collection<Role> "BomberSquadron,AEF1-Role-Bomber,B52-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "96BS"
+

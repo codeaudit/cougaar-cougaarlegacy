@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE oplan SYSTEM "oplan.dtd">
+
+<oplan
+	oplanID = "2001"
+	operationName = "Desert Return"
+	priority = "High"
+	cDay = "08/15/2005"
+	theaterId = "SWA"
+	terrainType = "Desert"
+	season = "Summer"
+	enemyForceType = "Conventional Forces"
+	hostNationPOLSupport = "true"
+	hostNationPOLCapability = "1,000,000 gals/day"
+	hostNationWaterSupport = "true"
+	hostNationWaterCapability = "500,000 gals/day">
+	<organization
+		OrgId = "AEF2001A1">
+		<orgactivity
+			ActivityName = "AEF2001A"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CG">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "AI">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "12x12x12">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+0"
+				thruTime = "C+20">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "8x8x8">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+61"
+				thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2001A2">
+		<orgactivity
+			ActivityName = "AEF2001A"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F16CJ">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SEAD">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 1"
+			ActivityType = "Employment-Defensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "12x12x12">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+0"
+				thruTime = "C+20">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2001A3">
+		<orgactivity
+			ActivityName = "AEF2001A"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "F15C">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "AvianoAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "OCA">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "12x12x12">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "18">
+			</keyvalue>
+			<timespan
+				startTime = "C+21"
+				thruTime = "C+60">
+			</timespan>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 3"
+			ActivityType = "Employment-Standdown"
+			OpTempo = "Medium">
+			<keyvalue
+				key = "sortieRate"
+				value = "8x8x8">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+61"
+				thruTime = "C+180">
+			</timespan>
+		</orgactivity>
+	</organization>
+	<organization
+		OrgId = "AEF2001A4">
+		<orgactivity
+			ActivityName = "AEF2001A"
+			ActivityType = "Deployment">
+			<keyvalue
+				key = "typeOfAircraft"
+				value = "UAV">
+			</keyvalue>
+			<keyvalue
+				key = "beddownLoc"
+				value = "PrinceSultanAFB">
+			</keyvalue>
+			<keyvalue
+				key = "missionType"
+				value = "SURV">
+			</keyvalue>
+		</orgactivity>
+		<orgactivity
+			ActivityName = "Phase 2"
+			ActivityType = "Employment-Offensive"
+			OpTempo = "High">
+			<keyvalue
+				key = "sortieRate"
+				value = "8x8">
+			</keyvalue>
+			<keyvalue
+				key = "numberOfAircraft"
+				value = "12">
+			</keyvalue>
+			<timespan
+				startTime = "C+21"
+				thruTime = "C+60">
+			</timespan>
+		</orgactivity>
+	</organization>
+
+	<forcepackage
+		ForcePackageId = "AEF2001A">
+	</forcepackage>
+
+</oplan>
+

@@ -1,0 +1,153 @@
+
+			  CARNEGIE MELLON UNIVERSITY
+			    NON-EXCLUSIVE END-USER
+			  SOFTWARE LICENSE AGREEMENT
+
+    
+				  RETSINA(tm)
+    Reusable Environment for Task Structured Intelligent Network Agents(tm)
+
+IMPORTANT: PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("AGREEMENT") CAREFULLY.
+           Unpacking, examining, or using the attached software and 
+           documentation constitutes acceptance of this license agreement.
+
+          LICENSE
+
+The CMU Software, together with  any fonts accompanying this Agreement, whether
+on  disk,  in read  only  memory  or  any other  media  or  in any  other  form
+(collectively,  the  "CMU Software")  is  never  sold.   It is  non-exclusively
+licensed  by Carnegie  Mellon University  ("CMU") to  you solely  for  your own
+DARPA-funded,  non-commercial research purposes on the terms of this Agreement.
+CMU retains the ownership of the CMU  Software and any subsequent copies of the
+CMU  Software.  The CMU  Software and any copies made under this  Agreement are
+subject to this Agreement.
+
+          YOU MAY:
+
+          1. LOAD and USE the CMU Software as long as the  CMU Software is only
+          used on one (1) computer at a time.
+
+          2. USE the CMU Software solely for your own internal,  non-commercial
+          research purposes. 
+
+          3. COPY the CMU Software for back-up purposes only. You may make  one
+          (1) copy of the CMU Software in  machine-readable  form  for  back-up
+	  purposes.  The  back-up  copy  must  contain  all  copyright  notices
+	  contained in the original CMU Software.
+
+          4. TERMINATE this Agreement by destroying the original and all copies
+          of the CMU Software in whatever form.
+
+          YOU MAY NOT:
+
+          1. Assign, delegate or  otherwise  transfer  the  CMU  Software,  the
+	  license (including this Agreement),  or  any  rights  or  obligations
+	  hereunder or thereunder, to another person or entity.  Any  purported
+	  assignment, delegation or transfer in  violation  of  this  provision
+	  shall be void.
+
+          2. Loan, distribute,  rent,  lease,  give,  sublicense  or  otherwise
+          transfer the CMU Software (or any copy of the CMU Software), in whole
+          or in part, to any other person or entity.
+
+          3. Copy, alter, translate, decompile, disassemble,  reverse  engineer
+          or create derivative works from the CMU Software, including  but  not
+          limited to, modifying the CMU Software to make  it  operate  on  non-
+	  compatible hardware.
+
+          4. Remove, alter or cause not to be displayed, any copyright  notices
+          or startup messages contained in the CMU Software.
+
+          5. Export the CMU Software or the product components in violation  of
+	  any United States export laws.
+
+Title to the CMU Software,  including the ownership of all copyrights, patents,
+trademarks  and  all  other  intellectual  property rights  subsisting  in  the
+foregoing, and all  adaptations to and modifications of  the foregoing shall at
+all times remain with CMU. CMU  retains all rights not expressly licensed under
+this Agreement. The CMU  Software, including any images, graphics, photographs,
+animation, video, audio, music and text incorporated therein is owned by CMU or
+its  suppliers   and  is  protected   by  United  States  copyright   laws  and
+international  treaty provisions.   Except as  otherwise expressly  provided in
+this  Agreement,  the copying,  reproduction,  distribution  or preparation  of
+derivative works  of the CMU Software  is strictly prohibited by  such laws and
+treaty provisions.   Nothing in  this Agreement constitutes  a waiver  of CMU's
+rights under United States copyright law.
+
+This Agreement and your rights are  governed by the laws of the Commonwealth of
+Pennsylvania.  If  for any reason a  court of competent  jurisdiction finds any
+provision  of this  Agreement, or  portion  thereof, to  be unenforceable,  the
+remainder of this Agreement shall continue in full force and effect.
+
+THIS LICENSE SHALL TERMINATE AUTOMATICALLY if you fail to comply with the terms
+of this Agreement.
+
+          DISCLAIMER OF WARRANTY ON CMU SOFTWARE
+
+You expressly  acknowledge and agree  that your use  of the CMU Software  is at
+your sole risk.
+
+THE CMU SOFTWARE IS PROVIDED "AS IS"  AND WITHOUT WARRANTY OF ANY KIND, AND CMU
+EXPRESSLY  DISCLAIMS ALL  WARRANTIES, EXPRESS  OR IMPLIED,  INCLUDING,  BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY  RIGHTS.  THE ENTIRE RISK AS TO THE
+QUALITY AND PERFORMANCE  OF THE CMU SOFTWARE IS BORNE  BY YOU.  THIS DISCLAIMER
+OF WARRANTIES, REMEDIES AND LIABILITY  ARE FUNDAMENTAL ELEMENTS OF THE BASIS OF
+THE AGREEMENT BETWEEN  CMU AND YOU.  CMU  WOULD NOT BE ABLE TO  PROVIDE THE CMU
+SOFTWARE WITHOUT SUCH LIMITATIONS.
+
+          LIMITATION OF LIABILITY
+
+THE  CMU  SOFTWARE  IS  BEING  PROVIDED  TO  YOU  FREE  OF  CHARGE.   UNDER  NO
+CIRCUMSTANCES, INCLUDING  NEGLIGENCE, SHALL CMU  BE LIABLE UNDER ANY  THEORY OR
+FOR  ANY  DAMAGES INCLUDING,  WITHOUT  LIMITATION,  DIRECT, INDIRECT,  GENERAL,
+SPECIAL, CONSEQUENTIAL, INCIDENTAL, EXEMPLARY  OR OTHER DAMAGES) ARISING OUT OF
+THE USE OF OR  INABILITY TO USE THE CMU SOFTWARE OR  OTHERWISE RELATING TO THIS
+AGREEMENT (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS  INTERRUPTION, LOSS  OF BUSINESS  INFORMATION OR  ANY  OTHER PECUNIARY
+LOSS), EVEN  IF CMU HAS BEEN ADVISED  OF THE POSSIBILITY OF  SUCH DAMAGES. SOME
+JURISDICTIONS  DO  NOT ALLOW  THE  EXCLUSION  OR  LIMITATION OF  INCIDENTAL  OR
+CONSEQUENTIAL DAMAGES SO THIS LIMITATION MAY NOT APPLY TO YOU.
+
+          ADDITIONAL PROVISIONS YOU SHOULD BE AWARE OF
+
+This Agreement constitutes  the entire agreement between you  and CMU regarding
+the CMU  Software and supersedes any prior  representations, understandings and
+agreements, either  oral or  written. No amendment  to or modification  of this
+Agreement will be binding unless in writing and signed by CMU.
+
+          U.S. GOVERNMENT RESTRICTED RIGHTS
+
+If the CMU Software or any accompanying documentation is used or acquired by or
+on behalf of any unit, division or agency of the United States Government, this
+provision  applies.  The  CMU Software  and any  accompanying  documentation is
+provided with RESTRICTED RIGHTS.  The use, modification, reproduction, release,
+display,  duplication  or disclosure  thereof  by or  on  behalf  of any  unit,
+division or agency  of the Government is subject to  the restrictions set forth
+in  subdivision (c)(1)  of the  Commercial Computer  Software-Restricted Rights
+clause at  48 CFR  52.227-19 and the  restrictions set  forth in the  Rights in
+Technical   Data-Non-Commercial   Items   clause    set   forth   in   48   CFR
+252.227-7013. The contractor/manufacturer of  the CMU Software and accompanying
+documentation is  Carnegie Mellon  University, 5000 Forbes  Avenue, Pittsburgh,
+Pennsylvania 15213, U.S.A.
+
+
+
+
+_______________________________________________
+Signature                              Date
+
+
+
+_______________________________________________
+Name
+
+
+
+_______________________________________________
+Title
+
+
+
+_______________________________________________
+Company

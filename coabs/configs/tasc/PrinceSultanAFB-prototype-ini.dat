@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/PrinceSultanAFB"
+
+[Relationship]
+Superior    "ACC"           	""
+Supporting  "MarinesCommand"  ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"PrinceSultanAFB"
+AlternateTypeIdentification	String	"SRC/PrinceSultanAFB"
+
+[OrganizationPG]
+Roles Collection<Role> "AirForceBase,OCONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "PrinceSultanAFB"
+

@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/FujairahAFBFuelInvMgr"
+
+[Relationship]
+Superior    "FujairahAFB"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "FujairahAFBFuelInvMgr"
+AlternateTypeIdentification String "SRC/FujairahAFBFuelInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,FuelSupplyProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "FujairahAFBFuelInvMgr"
+

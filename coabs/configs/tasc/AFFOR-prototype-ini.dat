@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/AFFOR"
+
+[Relationship]
+Superior    "JFACC"     "AirforceForcesCommand"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "AFFOR"
+AlternateTypeIdentification	String  "SRC/AFFOR"
+
+[OrganizationPG]
+Roles Collection<Role> "AirforceForcesCommand"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "AFFOR"
+

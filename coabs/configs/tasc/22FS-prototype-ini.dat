@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/22FS"
+
+[Relationship]
+Superior    "52FW"          ""
+Supporting  "HQ-USAF-XOP"   "F16CJ-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"22FS"
+AlternateTypeIdentification	String	"SRC/22FS"
+
+[OrganizationPG]
+Roles Collection<Role> "FighterSquadron,AEF9-Role-MultiRoleFighter,F16CJ-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "22FS"
+

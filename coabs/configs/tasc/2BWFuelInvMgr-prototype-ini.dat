@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/2BWFuelInvMgr"
+
+[Relationship]
+Superior    "2BW"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "2BWFuelInvMgr"
+AlternateTypeIdentification String "SRC/2BWFuelInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,FuelSupplyProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "2BWFuelInvMgr"
+

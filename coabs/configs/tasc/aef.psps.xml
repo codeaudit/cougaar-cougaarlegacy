@@ -1,0 +1,42 @@
+<!--
+  AEF Specific PSPs
+-->
+
+<object type="java.util.Vector">
+
+  <!-- Weather impact PSP for demonstrating ALP external agent liaison
+       capabilities -->
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>com.prc.alp.liaison.weather.PSP_WeatherImpact</Classname>
+    <PSPName>liaison/demo/WEATHER_IMPACT.PSP</PSPName>
+  </element>
+
+
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_AircraftAssets</Classname>
+    <PSPName>USAF/AIRCRAFTASSETS.PSP</PSPName>
+  </element>
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_PFT</Classname>
+    <PSPName>USAF/PFT.PSP</PSPName>
+  </element>
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_SquadronInfo</Classname>
+    <PSPName>USAF/SQUADRON_INFO.PSP</PSPName>
+  </element>
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_TransportationMetrics</Classname>
+    <PSPName>USAF/TRANSPORTATIONMETRICS.PSP</PSPName>
+  </element>
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_AircraftAvailability</Classname>
+    <PSPName>USAF/AIRCRAFTAVAILABILITY.PSP</PSPName>
+  </element>
+  <element type="org.cougaar.lib.planserver.NamedPSP">
+    <Classname>org.cougaar.domain.Airforce.PSP.PSP_ForcePackageMixDetail</Classname>
+    <PSPName>USAF/FORCEPACKAGEMIXDETAIL.PSP</PSPName>
+  </element>
+</object>
+
+
+

@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center">&nbsp;
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="deputies.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Liaison PlugIns</b></h2>
+<blockquote>
+  <p class="MsoNormal">The normal context for application of the liaison
+  capability is some class that extends <code>SimpleLiaisonPlugIn</code>, which
+  executes under its own thread, supports PlugIn parameters, and&nbsp; provides
+  access to an object of class <code>LiaisonManager</code>.&nbsp; A <code>LiaisonManager</code>
+  represents or &quot;defines&quot; the PlugIn as a liaison agent by giving it
+  an agent reference, which is used by external agents and the liaison
+  administration facilities to identify this PlugIn as agent visible outside of
+  the ALP/Cougaar framework.&nbsp; Agent references are normally represented as
+  having three parts separated by periods:</p>
+  <blockquote>
+    <p class="MsoNormal"><code>&lt;societyName&gt;.&lt;communityName&gt;.&lt;agentName&gt;</code></p>
+  </blockquote>
+  <p class="MsoNormal">where the first part identifies an entire agent society,
+  the second part identifies some subgroup or community within that society, and
+  the third part uniquely identifies a single agent within that community.&nbsp;
+  (Agents in societies that do not have separate subgroups use the society name
+  as the community name.)</p>
+  <p class="MsoNormal">There are several ways a PlugIn may identify itself
+  through a <code>LiaisonManager</code> (see the Javadocs or code for a complete
+  list):</p>
+  <blockquote>
+    <pre>import com.prc.alp.liaison.plugin.*;
+
+public class MyLiaisonPlugIn extends SimpleLiaisonPlugIn {
+
+  // Liaison manager -- controls access to potential liaisons
+  private LiaisonManager mgr = null;
+  
+  ... &lt;PlugIn subscriptions, etc.&gt; ...
+
+  protected void setupSubscriptions () {
+    ...
+    // Create a LiaisonManager for the agent Zone27 that belongs to the
+    //   Monitor community of a TrafficControl society
+    mgr = createLiaisonManager(&quot;Zone27&quot;, &quot;Monitor&quot;, &quot;TrafficControl&quot;);
+      <i>or
+</i>    // Create a LiaisonManager for an agent that belongs to the
+    //   Monitor community of a TrafficControl society; the agent's name
+    //   will be the name of the cluster in which this PlugIn runs
+    mgr = createLiaisonManager(&quot;TrafficControl&quot;, &quot;Monitor&quot;);
+      <i>or</i>
+    // Create a LiaisonManager for an agent using the PlugIn parameters
+    //    mySociety, myCommunity, and (optionally) myName to identify
+    //    this PlugIn
+    mgr = createLiaisonManager();
+    mgr.start(true);
+    ...
+  }</pre>
+    <pre>  protected void execute () {
+    ...
+  }
+}</pre>
+  </blockquote>
+  <p align="left">A <code>LiaisonManager</code> could be constructed at any
+  time, but it would make most sense to do this during PlugIn initialization
+  within the <code>setupSubscriptions</code> method.&nbsp; Note that it is
+  possible to configure the agent reference created by a LiaisionManager through
+  PlugIn parameters passed in through the cluster's initialization file; this
+  allows agent reference names to be changed without recompiling code.&nbsp; (A
+  complete list of liaison PlugIn parameters can be found in the <code>LConstants</code>
+  class code.)</p>
+  <p align="left">Normally, a PlugIn would only create a single <code>LiaisonManager</code>
+  to identify its cluster as a liaison agent, but it is possible to create
+  multiple managers within the same cluster or even within the same PlugIn if it
+  is necessary to give the cluster/PlugIn multiple &quot;identities&quot; in
+  dealing with external agents.</p>
+  <p align="left">Constructing a <code>LiaisonManager</code> does not
+  immediately cause anything to happen.&nbsp; Each manager has its own thread
+  for interacting with the liaison administration facilities through a
+  JavaSpace-based interface.&nbsp; To actually get the manager working, its <code>start</code>
+  method must be invoked.&nbsp; The single boolean parameter (normally <code>true</code>)
+  allows the PlugIn to wait for a liaison administrator to enable this agent for
+  external liaisons in general (without giving approval for liaisons with
+  specific external agents).</p>
+  <p align="left">Besides providing a liaison identity for a PlugIn, a <code>LiaisonManager</code>
+  also gives access to one or more <code>LiaisonDeputy</code> instances, which
+  enable communication with external agent societies.</p>
+</blockquote>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center">&nbsp;
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="deputies.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+Creating ANS socket at port 6677...
+Done
+Request type and agent name are required parameters
+Request type and agent name are required parameters
+java.net.SocketException: Connection reset by peer: JVM_recv in socket input stream read
+java.net.SocketException: Connection reset by peer: JVM_recv in socket input stream read

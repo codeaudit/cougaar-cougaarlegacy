@@ -1,0 +1,33 @@
+(AgentConfiguration 
+    :AgentName (CNNForecastWeatherAgent)
+    :AgentHost (hopper.mists.prc.com) 
+    :AgentPort (0) 
+
+    :AgentExternalQueryFunctionName (CNNForecastWeatherQueryFn) 
+    :HasExternalDataAcquisitionFunction (no) 
+    :InfoSourceFileName (none) 
+    :InfoSourceURL (file:///d:\alp\dev\com\prc\data\html\retsina\)
+    :AgentGUIName (WEATHER CNN) 
+
+    :TaskSchemaFile (ts.gin) 
+    :TaskReductionFile (rs.gin)
+    :TaskSchemaAdFile (weatherCNN.tsAd.gin) 
+    :ActionCodeURL (file:///d:\alp\dev\ext\retsina\actions\) 
+    :ActionTimeout (100) 
+
+    :LocalDbAdFile (weatherCNN.localDbAd.gin) 
+    :LocalDbRecordAge (1000) 
+
+    :MatchmakerName (none) 
+    :AgentOntology (weather) 
+
+    :LogFacilityConfigFiles (none)
+    :AgentType (info-agent) 
+    :AgentLabel (sensor-agent) 
+
+    :RetsinaDebugLevel (0) 
+    :AgentDebugLevel (0) 
+
+    :AgentOptionsSelect (0)
+    :AgentOptionsFile (weather.options) 
+)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE AEF SYSTEM "AEF.dtd">
+ <AEF>
+  <aefinfo aefName="AEF1" leadWing="388FW">
+    <squadronInfo squadronName="421FS" numberOfAircraft="18" typeOfAircraft="F16CG" mission="Air Interdiction" OPSTempo="10x10x10" beddownLocation="AvianoAFB" sortieCommencement="C+5"/>
+    <squadronInfo squadronName="79FS" numberOfAircraft="18" typeOfAircraft="F16CJ" mission="SEAD" OPSTempo="10x10x10" beddownLocation="AvianoAFB" sortieCommencement="C+3"/>
+    <squadronInfo squadronName="19FS" numberOfAircraft="18" typeOfAircraft="F15C" mission="Offensive Counter Air (OCA)" OPSTempo="10x10x10" beddownLocation="AvianoAFB" sortieCommencement="C+5"/>
+    <squadronInfo squadronName="75FS" numberOfAircraft="12" typeOfAircraft="A10" mission="Close Air Support (CAS)" OPSTempo="8x8x6" beddownLocation="AvianoAFB" sortieCommencement="C+3"/>
+    <squadronInfo squadronName="96BS" numberOfAircraft="6" typeOfAircraft="B52" mission="Strategic Attack" OPSTempo="2x2" beddownLocation="2BW" sortieCommencement="C+7"/>
+  </aefinfo>
+  <aefinfo aefName="AEF2" leadWing="28BW">
+    <squadronInfo squadronName="37BS" numberOfAircraft="6" typeOfAircraft="B1B" mission="Strategic Attack" OPSTempo="2x2" beddownLocation="28BW" sortieCommencement="C+7"/>
+    <squadronInfo squadronName="23FS" numberOfAircraft="18" typeOfAircraft="F16CJ" mission="SEAD" OPSTempo="10x10x10" beddownLocation="PrinceSultanAFB" sortieCommencement="C+3"/>
+    <squadronInfo squadronName="494FS" numberOfAircraft="24" typeOfAircraft="F15E" mission="Air Interdiction" OPSTempo="12x12x10" beddownLocation="PrinceSultanAFB" sortieCommencement="C+5"/>
+    <squadronInfo squadronName="60FS" numberOfAircraft="24" typeOfAircraft="F15C" mission="Offensive Counterair (OCA)" OPSTempo="12x12x10" beddownLocation="PrinceSultanAFB" sortieCommencement="C+5"/>
+    <squadronInfo squadronName="9RS" numberOfAircraft="2" typeOfAircraft="U2" mission="Surveillance" OPSTempo="1x1" beddownLocation="PrinceSultanAFB" sortieCommencement="C+2"/>
+    <squadronInfo squadronName="11RS" numberOfAircraft="4" typeOfAircraft="UAV" mission="Reconnaissance" OPSTempo="2x2x2" beddownLocation="PrinceSultanAFB" sortieCommencement="C+4"/>
+  </aefinfo>
+ </AEF>

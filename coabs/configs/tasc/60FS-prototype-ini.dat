@@ -1,0 +1,21 @@
+[Prototype]     SupportOrganization
+        
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/60FS"
+
+[Relationship]
+Superior    "33FW"          ""
+Supporting  "HQ-USAF-XOP"   "F15C-squadron"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"60FS"
+AlternateTypeIdentification	String	"SRC/60FS"
+
+[OrganizationPG]
+Roles Collection<Role> "FighterSquadron,AEF2-Role-AirSuperiority,F15C-squadron,SquadronOrganization,CONUS"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "60FS"
+

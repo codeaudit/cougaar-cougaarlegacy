@@ -1,0 +1,27 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/DLA"
+
+[Relationship]
+Superior    "JFACC"             "FuelSupplyProvider,SparePartsProvider"
+Supporting  "AvianoAFB"         "FuelSupplyProvider,SparePartsProvider"
+Supporting  "PrinceSultanAFB"   "FuelSupplyProvider,SparePartsProvider"
+Supporting  "DhahranAFB"        "FuelSupplyProvider,SparePartsProvider"
+Supporting  "FujairahAFB"       "FuelSupplyProvider,SparePartsProvider"
+Supporting  "DiegoGarciaAFB"    "FuelSupplyProvider,SparePartsProvider"
+Supporting  "2BW"               "FuelSupplyProvider,SparePartsProvider"
+Supporting  "28BW"              "FuelSupplyProvider,SparePartsProvider"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"Defense Logistics Agency"
+AlternateTypeIdentification	String	"SRC/DLA"
+
+[OrganizationPG]
+Roles Collection<Role> "FuelSupplyProvider,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "DLA"
+

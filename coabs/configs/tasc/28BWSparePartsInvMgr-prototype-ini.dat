@@ -1,0 +1,20 @@
+[Prototype]     SupportOrganization
+
+[UniqueId]      "UTC/SupportOrg"
+
+[UIC]		        "UIC/28BWSparePartsInvMgr"
+
+[Relationship]
+Superior    "28BW"           ""
+
+[TypeIdentificationPG]
+TypeIdentification          String "UTC/SupportOrg"
+Nomenclature                String "28BWSparePartsInvMgr"
+AlternateTypeIdentification String "SRC/28BWSparePartsInvMgr"
+
+[OrganizationPG]
+Roles Collection<Role> "OCONUS,SparePartsProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "28BWSparePartsInvMgr"
+

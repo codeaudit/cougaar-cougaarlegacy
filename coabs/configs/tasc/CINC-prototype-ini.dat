@@ -1,0 +1,23 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/CINC"
+
+[Relationship]
+#Supporting  "GlobalAir"         "AEFCluster"
+#Supporting   "OrganicAir"       "AEFCluster"
+#Supporting   "VirtualAir"       "AEFCluster"
+#Supporting   "VirtualAirlines"  "AEFCluster"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "CINC"
+AlternateTypeIdentification	String  "SRC/CINC"
+
+[OrganizationPG]
+Roles Collection<Role> "CommanderInChief"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "CINC"
+

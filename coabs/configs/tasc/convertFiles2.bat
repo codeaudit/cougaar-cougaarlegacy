@@ -1,0 +1,13 @@
+java com.tasc.Convert C:\alp\configs\aef-config\aef.psps.xml
+java com.tasc.Convert C:\alp\configs\aef-config\AEF.xml
+java com.tasc.Convert C:\alp\configs\aef-config\AEFALLOCATIONS.xml
+java com.tasc.Convert C:\alp\configs\aef-config\forward.xml
+java com.tasc.Convert C:\alp\configs\aef-config\FUELREQUESTS.xml
+java com.tasc.Convert C:\alp\configs\aef-config\oplan.xml
+java com.tasc.Convert C:\alp\configs\aef-config\oplan2001.xml
+java com.tasc.Convert C:\alp\configs\aef-config\oplan27000.xml
+java com.tasc.Convert C:\alp\configs\aef-config\oplan27896.xml
+java com.tasc.Convert C:\alp\configs\aef-config\SQUADRONAIRCRAFT.xml
+java com.tasc.Convert C:\alp\configs\aef-config\SQUADRONDEPLOYEDAIRCRAFT.xml
+java com.tasc.Convert C:\alp\configs\aef-config\SQUADRONMISSIONINFO.xml
+java com.tasc.Convert C:\alp\configs\aef-config\UTC.xml

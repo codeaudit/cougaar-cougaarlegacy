@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/HQ-USAF-XOP"
+
+[Relationship]
+Superior    "MAJCOM"     "HeadQuarters-USAF-XOP"
+
+[TypeIdentificationPG]
+TypeIdentification		      String  "UTC/CommandOrg"
+Nomenclature                String  "HQ-USAF-XOP"
+AlternateTypeIdentification	String  "SRC/HQ-USAF-XOP"
+
+[OrganizationPG]
+Roles Collection<Role> "HeadQuarters-USAF-XOP"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "HQ-USAF-XOP"
+

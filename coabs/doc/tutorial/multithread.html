@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="interactions.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="timeouts.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Multithread Interactors</b></h2>
+<blockquote>
+<p class="MsoNormal">Our example <code>TrafficMonitorInitiator</code> is trying
+to get sensor information from some remote agent(s).&nbsp; An <code>Interactor</code>
+may receive information two ways from an external CoABS agent:&nbsp; it may
+invoke an accessible RMI method of the external agent (i.e., as returned by a <code>CoABSLookupInteractor</code>)
+that returns some useful value, or it may rely on the external agent to send a
+message in a mutually understood language that contains the desired
+information.&nbsp; In the first case, the <code>Interactor</code> will wait
+(probably in its <code>send</code> action method) until the RMI method
+completes; in fact, the code for the <code>CoABSLookupInteractor</code> contains
+an example of this strategy.&nbsp; In the second case, the <code>CoABSLiaisonDeputy</code>
+provides an RMI proxy to accept incoming messages for all interactions using
+that deputy, but it then needs to correctly associate each received message with
+the appropriate <code>Interaction</code> instance and make the message available
+within the scope of the correct interaction thread.</p>
+<p class="MsoNormal">Let's assume that the liaison between our <code>
+TrafficMonitorInitiator</code> and an external agent will use this second method, so
+the external agent will be sending back messages that will be accepted by the <code>CoABSLiaisonDeputy</code>.&nbsp; We need
+to establish some way to ensure that the <code>CoABSLiaisonDeputy</code> will be
+able to place these messages in a context accessible to the <code>TrafficMonitorInitiator</code>
+when it is ready to use these messages (probably in its <code>receive</code>
+action method).&nbsp; The appropriate way to arrange this is to make use of the
+more capable <code>MultithreadInteractor</code> interface, which adds a single
+method to the existing <code>Interactor</code> interface:</p>
+<blockquote>
+<pre>public interface MultithreadInteractor
+  extends Interactor {
+  
+  public boolean handle (Object obj, Object context, Interaction iaction);
+  
+}</pre>
+</blockquote>
+<p class="MsoNormal">The <code>handle</code> method combines two
+functions.&nbsp; First, it allows some thread other than the interaction thread
+to pass an arbitrary object (the first argument) and an arbitrary context for
+interpreting or using that object (the second argument) into a <code>MultithreadInteractor</code>,
+while that <code>MultithreadInteractor</code> is actively being used by an
+interaction thread.&nbsp; Second, the <code>handle</code> method returns a
+boolean value which allows the <code>MultithreadInteractor</code> to inform the
+caller whether the supplied object was successfully used (handled).&nbsp; A
+handle method should never called within an interaction thread, while other <code>Interactor</code>
+action methods (e.g., <code>send</code>, <code>normalEnd</code>, etc.) should
+never be called <i>outside </i>of an interaction thread.</p>
+<p class="MsoNormal"><code>handle</code> methods are used by the <code>CoABSLiaisonDeputy</code>,
+which maintains a list of active interactions.&nbsp; Each time the deputy
+receives a new message from an external agent, it passes the message as the
+first argument to the <code>handle</code> method of each <code>MultithreadInteractor</code>
+associated with an active <code>Interaction</code>.&nbsp; (Since a given <code>Interactor</code>
+[not just a <code>MultithreadInteractor</code>] could be shared by multiple
+interaction threads, all of its methods are passed an <code>Interaction</code>
+instance in some argument so that they can determine which active <code>Interaction</code>
+serves as their current context.&nbsp; The methods of such a
+&quot;shareable&quot; <code>Interactor</code> should probably be synchronized to
+prevent race conditions.)&nbsp; If a handle method does not recognize the
+message as belonging to its current <code>Interactor</code>/<code>Interaction</code>
+combination, then it should ignore the message and return <code>false</code>;
+otherwise, it should do whatever is required to process the message quickly
+(e.g., save its contents somewhere) and return <code>true</code>.</p>
+<p class="MsoNormal">Once a message has been successfully &quot;handled&quot; by
+some <code>MultithreadInteractor</code>, the <code>CoABSLiaisonDeputy</code>
+assumes that the message has been (or will eventually be) correctly used in the
+appropriate interaction thread, and the deputy stops testing further active
+interactions with that message.&nbsp; If <i>no </i><code>handle</code> method
+associated with an active <code>Interaction</code> accepts the message, the
+deputy assumes that the received message represents an attempt to initiate a new
+interaction by an external agent, and follows procedures we will describe later.</p>
+<p class="MsoNormal">For now, we can simply elaborate our <code>TrafficMonitorInitiator</code>&nbsp;
+more to give it the necessary capabilities.&nbsp; At the same time, we will
+expose more functions of the deputy.&nbsp; These new functions depend heavily on
+an important feature of <code>Interaction</code> instances: each is tagged with
+a unique ID string (accessible through the <code>Interaction.getID</code>
+method).&nbsp; The new code is colored in <font color="#FF0000">red</font>:</p>
+<blockquote>
+  <pre>import com.globalinfotek.coabsgrid.*;
+<font color="#FF0000">import com.prc.alp.liaison.admin.*;
+</font>import com.prc.alp.liaison.interact.*;
+import com.prc.alp.liaison.plugin.*;
+
+public class TrafficMonitorInitiator
+  implements <font color="#FF0000">MultithreadInteractor</font> {
+  
+  <font color="#FF0000">CoABSLiaisonDeputy deputy = null;
+  AgentRep agent = null;
+  PlanData pData = null;</font>
+
+  public TrafficMonitorInitiator (CoABSLiaisonDeputy dep,
+                                  AgentRep extAgent) {
+    <font color="#FF0000">deputy = dep;
+    agent = extAgent;</font>
+  }
+  
+  public Object begin (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">pData = (PlanData) o;</font>
+    ...
+    return &quot;SEND&quot;;
+  }
+
+  public Object receive (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">Object reply;
+    while ( (reply = deputy.getLastReply(iaction.getID())) == null )
+      // need to wait for external agent to respond with a message
+      iaction.sleep(500);
+    Object result = ... // code that can extract a useful result
+                        //   from the raw message text returned by
+                        //   the external agent
+    // Have the deputy save the result extracted from this message in its
+    // saved reply hash table.  Use the unique ID of this interaction
+    // instance both as the key and the result object as the value.
+    deputy.saveReply(iaction.getID(), result);
+    return &quot;END&quot;;</font>
+  }
+
+  public Object send (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    <font color="#FF0000">String replyWith = iaction.getID();
+    String myMsg = ... // code that creates an outgoing message, using
+                       //   information extracted from pData, as well as
+                       //   a reference to the value of replyWith, so that
+                       //   replies to this message that are received
+                       //   later can be &quot;recognized&quot; in the handle method.
+    try {
+      extAgent.addMessage
+        (new Message(extAgent.getName(), deputy.getGridAgentRep(), myMsg));
+      // Have the deputy save a reference to this outgoing message in its
+      // pending reply hash table.  Use the unique ID of this interaction
+      // instance both as the key and the value, since each interaction
+      // using this interactor generates only one outgoing message.
+      deputy.putPending(iaction.getID(), iaction.getID());
+      return &quot;RECEIVE&quot;;
+      } catch (Exception ex) {
+        ...
+      }</font>
+  }
+
+  public Object normalEnd (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    ...
+    <font color="#FF0000">// Retrieve and return the result object associated with
+    // this interaction
+    return deputy.getLastReply(iaction.getID());</font>
+  }
+
+  public void abnormalEnd (Object o, Interaction iaction)
+    throws ActionTimeoutException, InteractionTimeoutException {
+    ...
+    System.err.println(&quot;Something bad happened!&quot;);
+  }
+
+  public ActionType nextAction (Object o, Interaction iaction, 
+                                boolean priorActExpired) {
+    if ( o == null )
+      return new ActionType(&quot;BEGIN&quot;);
+    else
+      return new ActionType((String) o);
+  }
+  
+  <font color="#FF0000">public boolean handle(Object obj, Object context, Interaction iaction) {
+    Message msg = (Message) obj;
+    ExternalAgentReference sender = (ExternalAgentReference) context;
+    if ( !sender.agent.equals(extAgent.getName()) ) {
+      return false; // message is not from the agent we recognize;
+    }
+    // Check to see if the received message is related to the current
+    //   interaction instance
+    String msgText = msg.getRawText();
+    String expectedID = iaction.getID();
+    String replyID = ... // code to extract some reply ID from the
+                         //   received message text
+    String pendingReply = (String) deputy.getPending(replyID);
+    if ( expectedID.equals(pendingReply) ) {
+      // The message is a valid response for this interaction
+      //   so have the deputy save this response
+      deputy.saveReply(expectedID, msg.getRawText());
+      return true;
+    } else
+      // Otherwise, it's a response from a different interaction, 
+      //   so it needs to be handled by that one
+      return false;    
+  }</font>
+
+}</pre>
+</blockquote>
+<p>We've made some significant changes.&nbsp; To make them easier to grasp,
+we'll consider the methods in the order in which they would normally be invoked
+(except for <code>nextAction</code>):</p>
+<ul>
+  <li>The constructor (invoked by the PlugIn) is passed references to a <code>CoABSLiaisonDeputy</code>
+    and an <code>AgentRep</code> for the external agent (see CoABS documentation
+    for more information on this class), and it saves them for later use.</li>
+  <li>The <code>begin</code> method (invoked by the interaction thread) takes its
+    initialization state object and saves it for later use.&nbsp; Remember that
+    this is the third argument passed to the <code>Interaction</code>
+    constructor, and is passed on to our <code>begin</code> method once the <code>Interaction</code>'s
+    <code>start</code> method is called.</li>
+  <li>The <code>send</code> method (invoked by the interaction thread) creates a
+    message that it transmits to the external agent by invoking its <code>addMessage</code>
+    method (see CoABS documentation for more information on this method).&nbsp; <code>send</code>
+    then has the deputy save a reference to this <code>Interaction</code> to
+    allow it to be matched against future incoming messages.</li>
+  <li>The <code>handle</code> method (invoked by the deputy) is asked to process
+    an incoming CoABS message.&nbsp; Assuming that originating agent matches the
+    external agent we expect, and that some part of the incoming message can be
+    extracted and matched against the interaction reference saved by the <code>send</code>
+    method, <code>handle</code> has the deputy save the actual reply text.&nbsp;
+    The reply is saved with a key that matches the original interaction ID.</li>
+  <li>Meanwhile, the <code>receive</code> method (invoked by the interaction
+    thread) has been periodically polling the deputy to see if a reply
+    associated with the current <code>Interaction</code> has yet been
+    received.&nbsp; (In the next section we'll examine why it invokes the <code>Interaction.sleep</code>
+    method instead of the more conventional <code>Thread.sleep</code>
+    method.)&nbsp; Once this happens (i.e., after the <code>handle</code> method
+    runs successfully), <code>receive</code> extracts some reply object from the
+    reply text and asks the deputy to save it.</li>
+  <li>The <code>normalEnd</code> method (invoked by the interaction thread)
+    retrieves the last (and only) reply object associated with this <code>Interaction</code>
+    and returns it.&nbsp; If the PlugIn that started this <code>Interaction</code>
+    waited for it to complete, then the reply object will be returned as the
+    value of the <code>Interaction</code>'s <code>start</code> method.&nbsp;
+    Otherwise, the PlugIn can check in the future to see if the <code>Interaction</code>
+    has completed (by calling <code>Interaction.isDone</code>) and then retrieve
+    the final result at that time (by calling <code>LiaisonDeputy.finishInteraction</code>).</li>
+</ul>
+<p>Of course, our <code>TrafficMonitorInitiator</code> and PlugIn are going to
+be in trouble if the external agent crashes or a reply message gets lost; the <code>receive</code>
+method may end up waiting forever for a reply that will never appear.&nbsp; The
+next section looks into this problem further.</p>
+</blockquote>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="interactions.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="timeouts.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

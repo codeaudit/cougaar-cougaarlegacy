@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/AEF"
+
+[Relationship]
+Superior      "ACC"               ""
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"AEF"
+AlternateTypeIdentification	String	"SRC/AEF"
+
+[OrganizationPG]
+Roles Collection<Role> "AEFGeneration"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "AEF"
+

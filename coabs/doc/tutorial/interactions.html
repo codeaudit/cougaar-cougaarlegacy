@@ -1,0 +1,229 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Liaison Capability Tutorial</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center">&nbsp;<a href="basic.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="multithread.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<hr color="#800080">
+<h2 align="left"><b>Interactions</b></h2>
+<blockquote>
+  <p class="MsoNormal">In the most abstract sense, a liaison between agents
+  requires the transfer of information between them, sometimes in one direction
+  only, but usually in both directions. These transfers can be divided over time
+  into distinct episodes or groupings called interactions. A simple interaction
+  involving two agents might follow a query/response pattern, while a complex
+  interaction involving multiple agents might implement an extended protocol
+  involving RFP/proposal/negotiation/award phases executed over time. However,
+  no matter what the pattern, an agent can only a perform a few distinct generic
+  actions as part of an interaction:<o:p>
+  </o:p>
+  </p>
+  <ul style="margin-top:0in" type="disc">
+    <li class="MsoNormal" style="mso-list:l11 level1 lfo8;tab-stops:list .5in">it
+      can set up or initialize information required for the interaction,</li>
+    <li class="MsoNormal" style="mso-list:l11 level1 lfo8;tab-stops:list .5in">it
+      can send information to or receive information from other agents (perhaps
+      many times during the interaction), or</li>
+    <li class="MsoNormal" style="mso-list:l11 level1 lfo8;tab-stops:list .5in">it
+      can terminate the interaction normally or abnormally and utilize any final
+      results, if appropriate.</li>
+  </ul>
+  <p class="MsoNormal">As you have seen, specific implementations of these types
+  of actions are defined in an <code>Interactor</code> instance.&nbsp; So in
+  order to actually execute or perform an interaction, we need to construct an
+  Interactor and pass it to an <code>Interaction</code>, and then start the <code>Interaction</code>
+  thread.&nbsp;&nbsp;</p>
+  <p class="MsoNormal">To extend our example further, we will have our PlugIn
+  perform an interaction with an external agent to acquire some external
+  information.&nbsp; This interaction will first require that we identify the external
+  agent we wish to contact somehow.&nbsp; One way to do this is by looking up
+  the agent by name in the CoABS Grid registry, which requires a separate interaction.&nbsp; And the <code>CoABSLiaisonDeputy</code> itself requires
+  that we register with the Grid (another interaction!) before we use its lookup
+  service.&nbsp; So we will actually perform three interactions to accomplish
+  our task.</p>
+  <p class="MsoNormal">Again, only a few more lines of code are required for
+  each of the three interactions; this code has been separately colored <font color="#FF0000">red</font>,
+  <font color="#008000">green</font>, and <font color="#000080">blue</font>;
+  we'll assume that the registration and lookup interactions belong in the
+  PlugIn's setupSubscriptions method, and that the interaction with the desired
+  external agent belongs in the PlugIn's execute method, because it will be
+  responding to some change in the local plan in this cluster:</p>
+  <blockquote>
+    <pre>import com.globalinfotek.coabsgrid.*;
+import com.prc.alp.liaison.plugin.*;
+<font color="#FF0000">import com.prc.alp.liaison.admin.*
+import com.prc.alp.liaison.interact.*;</font>
+import com.prc.alp.liaison.LConstants;
+import org.cougaar.core.cluster.*;
+
+public class MyLiaisonPlugIn extends SimpleLiaisonPlugIn {
+
+  // Liaison manager -- controls access to potential liaisons
+  private LiaisonManager mgr = null;
+  
+  // Liaison deputy -- manages interactions with remote agent society
+  //   (CoABS is the only one supported so far)
+  private CoABSLiaisonDeputy dep = null;
+  
+  // A CoABS Grid representation of an external agent
+  private AgentRep extAgent = null;
+  
+  ... &lt;PlugIn subscriptions, etc.&gt; ...
+
+  protected void setupSubscriptions () {
+    ...
+    // Create a LiaisonManager for the agent Zone27 that belongs to the
+    //   Monitor community of a TrafficControl society
+    mgr = createLiaisonManager(&quot;Zone27&quot;, &quot;Monitor&quot;, &quot;TrafficControl&quot;);
+    mgr.start(true);
+
+    // Create a deputy
+    CoABSLiaisonDeputy dep = 
+      (CoABSLiaisonDeputy) mgr.createLiaisonDeputy(LConstants.COABS_SOCIETY,
+                                                   getDelegate(),
+                                                   getParameters());
+    dep.start(true);
+    
+<font color="#FF0000">    // Create a CoABSRegistryInteractor to register as an agent on
+    //   the CoABS Grid
+    CoABSRegistryInteractor reg = new CoABSRegistryInteractor(dep);
+    
+    // Create an interaction that will execute the behavior of our
+    //   CoABSRegistryInteractor
+    Interaction regInt = 
+      new Interaction(dep, reg, ((LiaisonDeputy) dep).externalManager());
+
+    // Start the registration interaction and wait for it to finish
+    regInt.start(true);
+</font>  
+ <font color="#008000">   // Create a CoABSAgentDescription to identify the attributes of the
+    //   external agent we will look for; assume we know its name for
+    //   this example
+    CoABSAgentDescription desc = new CoABSAgentDescription();
+    desc.name = &quot;AcmeSensorFeed&quot;;
+    
+    // Create a CoABSLookupInteractor to contact the Grid lookup service
+    //   and find the desired external agent
+    CoABSLookupInteractor lookup = new CoABSLookupInteractor(dep, desc);
+    
+    // Create an interaction that will execute the behavior of our
+    //   CoABSLookupInteractor
+    Interaction lookInt = 
+      new Interaction(dep, lookup, ((LiaisonDeputy) dep).externalManager());
+    
+    // Start the lookup interaction and wait for it to finish; it will
+    //   return a final value which is a Vector of agent descriptions
+    //   matching the attributes (in this case, a name) we specified
+    Vector result = (Vector) lookInt.start(true);
+    if ( result == null || result.isEmpty() )
+      System.err.println(&quot;No AcmeSensorFeed registered on the Grid!&quot;);
+    else
+      // We'll assume that the first agent returned is the one we want
+      extAgent = (AgentRep) result.firstElement();
+</font>    ...
+  }</pre>
+    <pre>  protected void execute () {
+    ...
+<font color="#000080">    // Create a TrafficMonitorInitiator that fetches information
+    //   from some external agent
+    TrafficMonitorInitiator tmi = new TrafficMonitorInitiator(dep, extAgent);
+    
+    PlanData pdata = ... // Get some info out of the plan
+    // Create an interaction that will execute the behavior of our
+    //    TrafficMonitorInitiator
+    Interaction iact = new Interaction(dep, tmi, pdata);
+    
+    // Start the interaction running and wait for it to complete
+    Object result = lookInt.start(true);
+</font>    ...
+  }
+}</pre>
+  </blockquote>
+  <p align="left">For each of these three interactions, the use pattern is
+  similar:</p>
+  <ol>
+    <li>
+      <p align="left">An instance of an appropriate <code>Interactor</code> is
+      constructed first.&nbsp; Note that the constructor for an <code>Interactor</code>
+      can take any initialization arguments needed to support actions methods
+      executed later during an interaction thread.&nbsp; Typically, an
+      interactor's constructor will take at least a <code>LiaisonDeputy</code>
+      (e.g. a <code>CoABSLiaisonDeputy</code>) and some handle or way of
+      identifying some initial external agent(s) that will participate in the
+      interaction.&nbsp; The <code>CoABSRegistryInteractor</code> and the <code>CoABSLookupInteractor</code>
+      both use an agent reference supplied by the <code>CoABSLiaisonDeputy</code>
+      for this purpose.</li>
+    <li>
+      <p align="left">An instance of an <code>Interaction</code> is constructed
+      next.&nbsp; The constructor for an <code>Interaction</code> takes 3
+      arguments:&nbsp; a <code>LiaisonDeputy</code>, an <code>Interactor</code>,
+      and any desired initialization object.&nbsp; The initialization object
+      will be passed as an initial state to the <code>begin</code> method of the
+      given <code>Interactor</code> when the interaction thread is
+      started.&nbsp; In the above sample, the <code>Interaction</code>
+      controlled by the <code>TrafficMonitorInitiator</code> is given some data
+      extracted from the local plan which might, for example, identify what
+      information needs to be monitored.&nbsp; Note that constructing an <code>Interaction</code>
+      does not cause any action methods of its <code>Interactor</code> to be
+      executed.</li>
+    <li>
+      <p align="left">The <code>start</code> method of the new <code>Interaction</code>
+      is invoked.&nbsp; This causes a new interaction thread to be spawned which
+      will execute the <code>begin</code> method of the supplied <code>Interactor</code>,
+      followed by its <code>nextAction</code> method, etc., as described in the
+      prior tutorial section.&nbsp; The boolean argument supplied to the <code>start</code>
+      method controls whether it waits (blocks) for the interaction thread to
+      complete (when <code>true</code>) or returns immediately once the
+      interaction thread is active (when <code>false</code>).&nbsp; If the
+      PlugIn does wait for the interaction thread to complete, then the <code>start</code>
+      method will also return the value the interactor's <code>normalEnd</code>
+      method.&nbsp; In the above example, the <code>Interaction</code> with the <code>CoABSLookupInteractor</code>
+      returns a <code>Vector</code> of agent descriptions, while the <code>Interaction</code>
+      with the <code>TrafficMonitorInitiator</code> returns some other object of
+      local interest supplied by the external agent.&nbsp; (There is a way to
+      get the final result of an <code>Interaction</code> after it is finished
+      without blocking to wait for it to complete, as will be seen later.)</li>
+  </ol>
+  <p align="left">The example <code>TrafficMonitorInitiator</code> <code>Interactor</code>
+  might not work yet, because it may need to be passed additional information
+  from yet another thread of activity (associated with the <code>CoABSLiaisonDeputy</code>)
+  in order to receive information from an external agent.&nbsp; The next section
+  of the tutorial addresses this limitation.</p>
+</blockquote>
+<hr color="#800080">
+<table border="0" width="100%">
+  <tr>
+    <td width="33%"><font size="2"><b>Liaison Capability Tutorial</b></font></td>
+    <td width="33%">
+      <p align="center"><a href="basic.html"><img border="0" src="graphics/prev.gif" width="25" height="31"></a>&nbsp;
+      <a href="index.html"><img border="0" src="graphics/home.gif" width="45" height="31"></a>
+      <a href="multithread.html">
+      <img border="0" src="graphics/next.gif" width="21" height="31"></a></td>
+    <td width="34%">
+      <p align="right"><b><font size="2"><a href="../javadoc/index.html">Javadoc</a></font></b></td>
+  </tr>
+</table>
+<p align="center"><font size="1"><a href="copyright.html">Copyright Notice</a></font></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]  "UIC/OrganicAir"
+
+[Relationship]
+Superior      "TRANSCOM"  "AirTransportationProvider"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/SupportOrg"
+Nomenclature                String	"OrganicAir"
+AlternateTypeIdentification String  "SRC/OrganicAir"
+
+[OrganizationPG]
+Roles Collection<Role> "AirTransportationProvider"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "OrganicAir"
+

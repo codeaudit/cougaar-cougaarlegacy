@@ -1,0 +1,20 @@
+[Prototype]     CommandOrganization
+        
+[UniqueId]      "UTC/CommandOrg"
+
+[UIC]		        "UIC/ACC"
+
+[Relationship]
+Superior	    "JFACC"     "AirCombatCommand"
+
+[TypeIdentificationPG]
+TypeIdentification          String  "UTC/CommandOrg"
+Nomenclature                String	"ACC"
+AlternateTypeIdentification	String	"SRC/ACC"
+
+[OrganizationPG]
+Roles Collection<Role> "AirCombatCommand"
+
+[ClusterPG]
+ClusterIdentifier ClusterIdentifier  "ACC"
+
